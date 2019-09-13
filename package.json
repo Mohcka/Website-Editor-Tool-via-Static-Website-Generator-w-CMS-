@@ -3,7 +3,7 @@
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Michael Walker <bandagedwolf95@gmail.com>",
   "dependencies": {
     "animejs": "^3.1.0",
     "bootstrap": "^4.3.1",
