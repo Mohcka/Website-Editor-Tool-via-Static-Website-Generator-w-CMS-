@@ -13,10 +13,10 @@ export default {
   titleWrapperStyle: {
     textAlign: "center",
     fontWeight: "bold",
+    padding: "40px 0",
   },
   titleStyle: {
     padding: "0 10px",
-    color: primary,
-    borderBottom: `3px solid ${primary}`,
+    color: dark,
   },
 }

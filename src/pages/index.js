@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Image as BSImage } from "react-bootstrap"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -32,14 +32,18 @@ const AboutSection = props => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
+                margin: "0 auto",
                 height: "100%",
+                maxWidth: "500px",
               }}
             >
-              <img
+              {/* <img
                 src={`${props.section.image}`}
                 alt=""
                 style={{ alignSelf: "center" }}
-              />
+              /> */}
+
+              <BSImage src={`${props.section.image}`} fluid />
             </div>
           </Col>
           <Col xl={6} lg={12}>
@@ -80,10 +84,7 @@ const Sections = ({ data }) => (
         if (section.type === "about")
           return (
             <React.Fragment key={i}>
-              <AboutSection
-                section={section}
-                style={sectionBackground(i)}
-              />
+              <AboutSection section={section} style={sectionBackground(i)} />
             </React.Fragment>
           )
 
