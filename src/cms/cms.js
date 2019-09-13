@@ -1,0 +1,1 @@
+import CMS from "gatsby-plugin-netlify-cms"

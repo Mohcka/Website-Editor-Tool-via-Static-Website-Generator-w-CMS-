@@ -1,0 +1,14 @@
+.contact-info, .social-medias{
+    ul{
+        display: flex;
+    }
+
+    li{
+        margin: 0 5px;
+    }
+}
+
+.navbar-nav li{
+    margin-right: 20px;
+    font-weight: bold;
+}

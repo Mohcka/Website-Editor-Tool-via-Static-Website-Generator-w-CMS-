@@ -1,0 +1,19 @@
+.slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+}
+
+.slideshow-image {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  div {
+    height: inherit;
+    width: inherit;
+    background-size: cover;
+    background-position: center center;
+  }
+}

@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: static/uploads/images
+public_folder: uploads/images
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    editor:
+      preview: false
+    files:
+      - label: "Landing Page"
+        name: "landing"
+        file: "content/landing-page.md"
+        fields:
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            types:
+              - label: "About"
+                name: "about"
+                widget: object
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - {
+                      label: "Featured Image",
+                      name: "image",
+                      widget: "image",
+                      default: "roto.jpg",
+                    }
+                  - {
+                      label: "Description",
+                      name: "description",
+                      widget: "markdown",
+                    }
+              - label: "Paragraph"
+                name: "paragraph"
+                widget: object
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Paragraph", name: "paragraph", widget: "string" }
