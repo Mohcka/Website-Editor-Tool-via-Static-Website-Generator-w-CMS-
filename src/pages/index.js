@@ -1,7 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import GImage from "gatsby-image/withIEPolyfill"
 
-import { Container, Row, Col, Image as BSImage } from "react-bootstrap"
+import {
+  Container,
+  Row,
+  Col,
+  Image as BSImage,
+  Card,
+  Accordion,
+} from "react-bootstrap"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -74,6 +82,45 @@ const ParagraphSection = props => (
   </div>
 )
 
+const AccordianSection = ({ data }) => (
+  <>
+    <Row>
+      <Col xs={12} lg={6}>
+        <div className="image">
+          <GImage
+            fluid={data.file.childImageSharp.fluid}
+            objectFit="cover"
+            objectPosition="50% 50%"
+            alt=""
+          />
+        </div>
+      </Col>
+      <Col xs={12} lg={6}>
+        <div className="accordian">
+          <Accordion defaultActiveKey="0">
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="0">
+                Click me!
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>Hello! I'm the body</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="1">
+                Click me!
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>Hello! I'm another body</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </div>
+      </Col>
+    </Row>
+  </>
+)
+
 const sectionBackground = ind => ({
   background: ind % 2 == 1 ? varStyles.light : "inherit",
 })
@@ -107,16 +154,21 @@ const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
     <Sections data={data} />
+    <AccordianSection data={data} />
     <ContactForm />
   </Layout>
 )
 
 export const query = graphql`
   {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: { frontmatter: { title: { eq: "Landing Page" } } }
+    ) {
       edges {
         node {
+          id
           frontmatter {
+            title
             sections {
               description
               image
@@ -125,6 +177,15 @@ export const query = graphql`
               paragraph
             }
           }
+        }
+      }
+    }
+
+    file(relativePath: { eq: "opengraph.jpeg" }) {
+      childImageSharp {
+        id
+        fluid {
+          srcSetWebp
         }
       }
     }
