@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import CarouselController from "./CarouselController"
 
-/** @const {Array} dummySlides dummy data for the slide show for missing props */
+// Dummy slides for demonstration purposes
 const dummySlides = [
   {
     image:
