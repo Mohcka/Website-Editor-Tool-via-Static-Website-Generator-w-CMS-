@@ -9,7 +9,10 @@ import {
   Image as BSImage,
   Card,
   Accordion,
+  Button,
 } from "react-bootstrap"
+
+import { useAccordionToggle } from "react-bootstrap/AccordionToggle"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -84,34 +87,88 @@ const ParagraphSection = props => (
 
 const AccordianSection = ({ data }) => (
   <>
-    <Row>
-      <Col xs={12} lg={6}>
-        <div className="image">
-          <GImage
+    <Row style={{ backgroundColor: varStyles.light }}>
+      <Col md={6} className="d-sm-none d-md-block">
+        <div
+          className="image "
+          style={{ maxWidth: "100%", height: "100%", display: "flex" }}
+        >
+          {/* <GImage
             fluid={data.file.childImageSharp.fluid}
             objectFit="cover"
             objectPosition="50% 50%"
             alt=""
+          /> */}
+          <img
+            src={`${data.file.childImageSharp.fluid.src}`}
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              flex: 1,
+            }}
           />
         </div>
       </Col>
-      <Col xs={12} lg={6}>
+      <Col sm={12} md={6}>
+        <h2 style={{ textAlign: "center" }}>
+          <span style={{}}>Bullet Points</span>
+        </h2>
         <div className="accordian">
-          <Accordion defaultActiveKey="0">
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="0">
-                Click me!
+          <Accordion defaultActiveKey="0" style={{ paddingBottom: "5px" }}>
+            <Card style={{ border: "none", background: "none" }}>
+              <Accordion.Toggle
+                as={Card.Header}
+                style={{
+                  margin: "10px",
+                  border: "1px solid rgba(0,0,0,.125)",
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                }}
+                eventKey="0"
+              >
+                <i class="fas fa-minus"></i>{" "}
+                <span style={{ color: "blue", fontWeight: "bold" }}>
+                  Click me!
+                </span>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
-                <Card.Body>Hello! I'm the body</Card.Body>
+                <Card.Body
+                  style={{
+                    marginLeft: "30px",
+                    borderLeft: `1px solid ${varStyles.dark}`,
+                  }}
+                >
+                  Hello! I'm the body
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="1">
-                Click me!
+            <Card style={{ border: "none", background: "none" }}>
+              <Accordion.Toggle
+                as={Card.Header}
+                eventKey="1"
+                style={{
+                  margin: "10px",
+                  border: "1px solid rgba(0,0,0,.125)",
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                }}
+              >
+                <i class="fas fa-minus"></i>{" "}
+                <span style={{ color: "blue", fontWeight: "bold" }}>
+                  Click me!
+                </span>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body>Hello! I'm another body</Card.Body>
+                <Card.Body
+                  style={{
+                    marginLeft: "30px",
+                    borderLeft: `1px solid ${varStyles.dark}`,
+                  }}
+                >
+                  Hello! I'm another body
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
@@ -150,14 +207,18 @@ const Sections = ({ data }) => (
   </div>
 )
 
-const IndexPage = ({ data }) => (
-  <Layout>
-    <SEO title="Home" />
-    <Sections data={data} />
-    <AccordianSection data={data} />
-    <ContactForm />
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  console.log(data)
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Sections data={data} />
+      <AccordianSection data={data} />
+      <ContactForm />
+    </Layout>
+  )
+}
 
 export const query = graphql`
   {
@@ -169,6 +230,11 @@ export const query = graphql`
           id
           frontmatter {
             title
+            fimage {
+              childImageSharp {
+                id
+              }
+            }
             sections {
               description
               image
@@ -185,7 +251,7 @@ export const query = graphql`
       childImageSharp {
         id
         fluid {
-          srcSetWebp
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

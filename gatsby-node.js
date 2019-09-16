@@ -9,6 +9,12 @@ exports.createPages = async ({ graphql, actions }) => {
 //   const page = path.resolve("./src/index.js");
 }
 
+exports.onCreateNode = ({ node, getNode }) => {
+  if(node.internal.type === `MarkdownRemark`) {
+    
+  }
+}
+
 // fix for build using bootstrap
 exports.onCreateWebpackConfig = ({ actions, stage, loaders }) => {
   const config = {

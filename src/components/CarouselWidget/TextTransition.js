@@ -67,7 +67,9 @@ class TextTransition extends Component {
     return (
       <div className="text-slide-1-container">
         <div className="text-wrapper">
-          <span className="textslide-title">{this.state.header}</span>
+          <span className="textslide-title" style={{ fontWeight: "bold" }}>
+            {this.state.header}
+          </span>
 
           <span className="textslide-subtitle">{this.state.subheader}</span>
         </div>

@@ -66,10 +66,6 @@ const Actions = props => (
   </div>
 )
 
-Navbar.propTypes = {
-  
-}
-
 const Navbar = props => (
   <>
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -114,6 +110,10 @@ const Navbar = props => (
     </nav>
   </>
 )
+
+Navbar.propTypes = {
+  pages: PropTypes.object.isRequired,
+}
 
 const Header = ({ siteTitle }) => {
   const data = useStaticQuery(graphql`

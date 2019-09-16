@@ -16,4 +16,5 @@ socialmedia:
 address: 123 Test Street
 phone: 18008008999
 email: test@email.com
+fimage: ./images/construction-late-payments.jpg
 ---
