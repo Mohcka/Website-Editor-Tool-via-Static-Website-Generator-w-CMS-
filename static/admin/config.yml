@@ -52,31 +52,15 @@ collections:
         label: "Settings"
         file: "content/settings.md"
         fields:
-          - { label: Title, name: title, widget: hidden, default: Settgings}
+          - { label: Title, name: title, widget: hidden, default: Settgings }
           - label: "Social Media"
             name: "social-media"
-            widget: "object"
+            widget: "list"
+            allow_add: false
             fields:
-              - label: Facebook
-                name: facebook
-                widget: object
-                  - { label: "URL", name: url, widget: string }
-                  - { label: "Type", name: type, widget: hidden, default: "fb" }
-                  - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-facebook-square"></i>" }
-              - label: Google
-                name: google
-                widget: object
-                  - { label: "URL", name: url, widget: string }
-                  - { label: "Type", name: type, widget: hidden, default: "gp" }
-                  - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-google-plus-square"></i>" }
-              - label: Instagram
-                name: instagram
-                widget: object
-                  - { label: "URL", name: url, widget: string }
-                  - { label: "Type", name: type, widget: hidden, default: "ig" }
-                  - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-instagram"></i>" }
-              - { label: "Google Plus", name: google_plus, widget: string }
-              - { label: Instagram, name: instagram, widget: string }
+              - { label: "URL", name: url, widget: string }
+              - { label: "Type", name: type, widget: hidden, default: "fb"}
+              - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-facebook-square"></i>" }
           - label: "Contact Information"
             name: contact-info
             widget: "object"

@@ -82,7 +82,9 @@ const Actions = props => (
       </div>
       <div className="social-medias">
         <ul>
-          {Object.values(props.social_info.social_media).map(s => {
+          {props.social_info.social_media.map(s => {
+            console.log(s);
+            
             if (s.url)
               return (
                 <li>
@@ -167,9 +169,9 @@ const Header = ({ siteTitle }) => {
                 phone
               }
               social_media {
-                facebook
-                instagram
-                google_plus
+                url
+                type
+                icon
               }
             }
           }
@@ -192,7 +194,7 @@ const Header = ({ siteTitle }) => {
     }
   `)
 
-  console.log(data.social_info.edges[0].node.frontmatter)
+  console.log(data.social_info.edges[0].node.frontmatter.social_media)
   
 
   return (
