@@ -17,6 +17,7 @@ collections:
         name: "landing"
         file: "content/landing-page.md"
         fields:
+          - { label: "Featured Image", name: "fimage", widget: hidden, default: "./images/opengraph.jpg" }
           - label: "Sections"
             name: "sections"
             widget: "list"
@@ -52,7 +53,7 @@ collections:
         label: "Settings"
         file: "content/settings.md"
         fields:
-          - { label: Title, name: title, widget: hidden, default: Settgings }
+          - { label: Title, name: title, widget: hidden, default: Settings }
           - label: "Social Media"
             name: "social-media"
             widget: "list"
