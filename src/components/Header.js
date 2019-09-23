@@ -83,8 +83,6 @@ const Actions = props => (
       <div className="social-medias">
         <ul>
           {props.social_info.social_media.map(s => {
-            console.log(s);
-            
             if (s.url)
               return (
                 <li>
@@ -194,14 +192,11 @@ const Header = ({ siteTitle }) => {
     }
   `)
 
-  console.log(data.social_info.edges[0].node.frontmatter.social_media)
-  
-
   return (
     <header id="home" style={{}}>
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
       <Navbar pages={data.pages.edges[0].node.frontmatter} />
-      <CarouselWidget themeColor={FlakeTheme.primary}/>
+      <CarouselWidget themeColor={FlakeTheme.primary} />
     </header>
   )
 }
