@@ -14,5 +14,6 @@ contact-info:
   address: My House
   email: My Email
   phone: My Phone
+fimage: ./images/opengraph.jpg
 ---
 
