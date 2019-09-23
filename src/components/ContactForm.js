@@ -26,12 +26,12 @@ const ContactForm = props => (
           />
         </div>
         <div className="form-group">
-          <label for="emailField">Your Phone Number:</label>
+          <label for="phoneField">Your Phone Number:</label>
           <input
-            type="email"
-            name="email"
+            type="tel"
+            name="phone"
             class="form-control"
-            id="emailField"
+            id="phoneField"
           />
         </div>
         <div className="form-group">
