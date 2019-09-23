@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import GImage from "gatsby-image/withIEPolyfill"
+import GImg from "gatsby-image"
+// import GImgIE
 
 import {
   Container,
@@ -39,21 +40,17 @@ const AboutSection = props => {
               className="image-container"
               style={{
                 display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
                 alignItems: "center",
-                margin: "0 auto",
+                justifyContent: "center",
                 height: "100%",
-                maxWidth: "500px",
+                padding: "0 50px",
               }}
             >
-              {/* <img
-                src={`${props.section.image}`}
-                alt=""
-                style={{ alignSelf: "center" }}
-              /> */}
-
-              <BSImage src={`${props.section.image}`} fluid />
+              <GImg
+                fluid={props.section.image.childImageSharp.fluid}
+                style={{ flex: 1 }}
+                imgStyle={{ objectFit: "contain" }}
+              />
             </div>
           </Col>
           <Col xl={6} lg={12}>
@@ -107,22 +104,7 @@ const AccordianSection = ({ data }) => (
           className="image "
           style={{ maxWidth: "100%", height: "100%", display: "flex" }}
         >
-          {/* <GImage
-            fluid={data.file.childImageSharp.fluid}
-            objectFit="cover"
-            objectPosition="50% 50%"
-            alt=""
-          /> */}
-          <img
-            src={`${data.file.childImageSharp.fluid.src}`}
-            alt=""
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              flex: 1,
-            }}
-          />
+          <GImg fluid={data.file.childImageSharp.fluid} style={{ flex: 1 }} />
         </div>
       </Col>
       <Col sm={12} md={6}>
@@ -171,6 +153,10 @@ const Sections = ({ data }) => (
   <div className="sections">
     {data.allMarkdownRemark.edges.map(edge =>
       edge.node.frontmatter.sections.map((section, i) => {
+        console.log(`Section ${i} is:`)
+
+        console.log(section)
+
         if (section.type === "about")
           return (
             <React.Fragment key={i}>
@@ -194,6 +180,8 @@ const Sections = ({ data }) => (
 )
 
 const IndexPage = ({ data }) => {
+  console.log(data)
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -221,7 +209,13 @@ export const query = graphql`
             }
             sections {
               description
-              image
+              image {
+                childImageSharp {
+                  fluid(maxWidth: 400) {
+                    ...GatsbyImageSharpFluid_withWebp_noBase64
+                  }
+                }
+              }
               title
               type
               paragraph

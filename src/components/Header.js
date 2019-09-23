@@ -6,7 +6,7 @@ import Helmet from "react-helmet"
 
 import styled from "styled-components"
 import FlakeTheme from "./styles/FlakeTheme"
-import "./Header.scss"
+// import "./Header.scss"
 
 import CarouselWidget from "./CarouselWidget"
 
@@ -87,7 +87,7 @@ const Actions = props => (
               return (
                 <li>
                   <div className={`${s.type}-icon icon`}>
-                    <a href={`${s.url}`} target="_blank">
+                    <a href={`${s.url}`} rel="noreferrer" target="_blank">
                       <span
                         dangerouslySetInnerHTML={{ __html: s.icon }}
                         style={{ color: FlakeTheme.light }}
