@@ -1,15 +1,15 @@
 ---
 title: Settings
 social-media:
-    - url: facebook.com
-      type: fb
-      icon: "<i class=\"fab fa-facebook-square\"></i>"
-    - url: google.com
-      type: gp
-      icon: "<i class=\"fab fa-google-plus-g\"></i>"
-    - url: instagram.com
-      type: ig
-      icon: "<i class=\"fab fa-instagram\"></i>"
+  - icon: <i class="fab fa-facebook-square"></i>
+    type: fb
+    url: facebook.com
+  - icon: <i class="fab fa-google-plus-g"></i>
+    type: gp
+    url: ''
+  - icon: <i class="fab fa-instagram"></i>
+    type: ig
+    url: instagram.com
 contact-info:
   address: 123 Sesame St
   email: my@email.com
