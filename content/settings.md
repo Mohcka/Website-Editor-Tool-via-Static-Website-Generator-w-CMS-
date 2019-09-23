@@ -11,8 +11,8 @@ social-media:
     type: ig
     url: https://www.instagram.com/
 contact-info:
-  address: My Address
+  address: My House
   email: My Email
-  phone: My House
+  phone: My Phone
 ---
 
