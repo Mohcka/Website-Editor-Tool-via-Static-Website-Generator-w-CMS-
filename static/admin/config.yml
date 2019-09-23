@@ -19,16 +19,16 @@ collections:
             name: "social-media"
             widget: "object"
             fields:
-              - { label: Facebook, name: "facebook", wdiget: "string" }
-              - { label: "Google Plus", name: "google_plus", wdiget: "string" }
-              - { label: Instagram, name: instagram, wdiget: "string" }
-            - label: "Contact Information"
-              name: "contact-info"
-              widget: "object"
-              fields: 
-                - { label: "Address", name: "address", widget: "string"}
-                - { label: "Phone Number", name: "phone", widget: "string"}
-                - { label: "Email Address", name: "email", widget: "string"}
+              - { label: Facebook, name: facebook, wdiget: string }
+              - { label: "Google Plus", name: google_plus, wdiget: string }
+              - { label: Instagram, name: instagram, wdiget: string }
+          - label: "Contact Information"
+            name: contact-info
+            widget: "object"
+            fields: 
+              - { label: "Address", name: address, widget: string}
+              - { label: "Phone Number", name: phone, widget: string}
+              - { label: "Email Address", name: email, widget: string}
   - name: "pages"
     label: "Pages"
     editor:
