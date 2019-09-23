@@ -82,7 +82,7 @@ const Actions = props => (
       </div>
       <div className="social-medias">
         <ul>
-          {Object.values(props.social_info.socia_media).map(s => {
+          {Object.values(props.social_info.social_media).map(s => {
             if (s.url)
               return (
                 <li>
@@ -191,6 +191,9 @@ const Header = ({ siteTitle }) => {
       }
     }
   `)
+
+  console.log(data.social_info.edges[0].node.frontmatter)
+  
 
   return (
     <header id="home" style={{}}>
