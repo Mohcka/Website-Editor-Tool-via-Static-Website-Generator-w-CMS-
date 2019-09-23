@@ -12,6 +12,9 @@ import {
   Button,
 } from "react-bootstrap"
 
+import styled from "styled-components"
+import varStyles, { Title } from "../components/styles/FlakeTheme"
+
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle"
 
 import Layout from "../components/layout"
@@ -19,21 +22,17 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 
 import ContactForm from "../components/ContactForm"
-import varStyles from "../components/styles/variables"
 
 import { slugify } from "../utils/text-helpers"
+import FlakeTheme from "../components/styles/FlakeTheme"
 
 const AboutSection = props => {
   return (
-    <div
-      className="about-section"
-      id={`${slugify(props.section.title)}`}
-      style={{ marginTop: "10px", ...props.style }}
-    >
+    <div style={{ margin: "10px" }} id={`${slugify(props.section.title)}`}>
       <Container>
-        <h2 style={varStyles.titleWrapperStyle}>
-          <span style={varStyles.titleStyle}>{props.section.title}</span>
-        </h2>
+        <Title>
+          <span>{props.section.title}</span>
+        </Title>
         <Row>
           <Col xl={6} lg={12}>
             <div
@@ -70,25 +69,40 @@ const AboutSection = props => {
   )
 }
 
+const StyledParagraph = styled.div``
+
 const ParagraphSection = props => (
   <div
     className="paragrpah-section"
     id={`${slugify(props.section.title)}`}
     style={props.style}
   >
-    <h2 style={varStyles.titleWrapperStyle}>
-      <span style={varStyles.titleStyle}>{props.section.title}</span>
-    </h2>
+    <Title>
+      <span>{props.section.title}</span>
+    </Title>
     <div className="paragraph">
       <span>{props.section.paragraph}</span>
     </div>
   </div>
 )
 
+const StyledAccordionToggle = styled.div`
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 50px;
+  background-color: white;
+  padding: 10px;
+`
+const StyledAccordionCollapse = styled.div`
+  margin-left: 30px;
+  padding: 15px;
+  border-left: 1px solid ${props => props.theme.dark};
+`
+
 const AccordianSection = ({ data }) => (
   <>
     <Row style={{ backgroundColor: varStyles.light }}>
-      <Col md={6} className="d-sm-none d-md-block">
+      <Col md={6} className="d-none d-md-block">
         <div
           className="image "
           style={{ maxWidth: "100%", height: "100%", display: "flex" }}
@@ -112,63 +126,35 @@ const AccordianSection = ({ data }) => (
         </div>
       </Col>
       <Col sm={12} md={6}>
-        <h2 style={{ textAlign: "center" }}>
-          <span style={{}}>Bullet Points</span>
-        </h2>
+        <Title>
+          <span>Bullet Points</span>
+        </Title>
         <div className="accordian">
           <Accordion defaultActiveKey="0" style={{ paddingBottom: "5px" }}>
             <Card style={{ border: "none", background: "none" }}>
-              <Accordion.Toggle
-                as={Card.Header}
-                style={{
-                  margin: "10px",
-                  border: "1px solid rgba(0,0,0,.125)",
-                  borderRadius: "50px",
-                  backgroundColor: "white",
-                }}
-                eventKey="0"
-              >
+              <Accordion.Toggle as={StyledAccordionToggle} eventKey="0">
                 <i class="fas fa-minus"></i>{" "}
-                <span style={{ color: "blue", fontWeight: "bold" }}>
+                <span style={{ color: FlakeTheme.primary, fontWeight: "bold" }}>
                   Click me!
                 </span>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
-                <Card.Body
-                  style={{
-                    marginLeft: "30px",
-                    borderLeft: `1px solid ${varStyles.dark}`,
-                  }}
-                >
+                <StyledAccordionCollapse>
                   Hello! I'm the body
-                </Card.Body>
+                </StyledAccordionCollapse>
               </Accordion.Collapse>
             </Card>
             <Card style={{ border: "none", background: "none" }}>
-              <Accordion.Toggle
-                as={Card.Header}
-                eventKey="1"
-                style={{
-                  margin: "10px",
-                  border: "1px solid rgba(0,0,0,.125)",
-                  borderRadius: "50px",
-                  backgroundColor: "white",
-                }}
-              >
+              <Accordion.Toggle as={StyledAccordionToggle} eventKey="1">
                 <i class="fas fa-minus"></i>{" "}
-                <span style={{ color: "blue", fontWeight: "bold" }}>
+                <span style={{ color: FlakeTheme.primary, fontWeight: "bold" }}>
                   Click me!
                 </span>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body
-                  style={{
-                    marginLeft: "30px",
-                    borderLeft: `1px solid ${varStyles.dark}`,
-                  }}
-                >
-                  Hello! I'm another body
-                </Card.Body>
+                <StyledAccordionCollapse>
+                  Hello! I'm the body
+                </StyledAccordionCollapse>
               </Accordion.Collapse>
             </Card>
           </Accordion>

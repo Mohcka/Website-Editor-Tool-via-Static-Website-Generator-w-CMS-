@@ -14,6 +14,8 @@ import Header from "./Header"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../scss/main.scss"
 // import "./layout.css"
+import styled, { ThemeProvider } from "styled-components"
+import FlakeTheme from "./styles/FlakeTheme"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,18 +29,20 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Head />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div style={{}}>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+    <ThemeProvider theme={FlakeTheme}>
+      <div>
+        <Head />
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <div style={{}}>
+          <main>{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </div>
       </div>
-    </>
+    </ThemeProvider>
   )
 }
 

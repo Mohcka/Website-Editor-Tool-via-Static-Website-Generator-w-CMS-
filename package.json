@@ -6,6 +6,7 @@
   "author": "Michael Walker <bandagedwolf95@gmail.com>",
   "dependencies": {
     "animejs": "^3.1.0",
+    "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.3.1",
     "gatsby": "^2.15.7",
     "gatsby-image": "^2.2.17",
@@ -15,6 +16,7 @@
     "gatsby-plugin-react-helmet": "^3.1.6",
     "gatsby-plugin-sass": "^2.1.13",
     "gatsby-plugin-sharp": "^2.2.19",
+    "gatsby-plugin-styled-components": "^3.1.6",
     "gatsby-remark-copy-linked-files": "^2.1.15",
     "gatsby-remark-images": "^3.1.20",
     "gatsby-remark-prismjs": "^3.3.12",
@@ -34,6 +36,7 @@
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
+    "styled-components": "^4.3.2",
     "webpack": "^4.39.3"
   },
   "devDependencies": {

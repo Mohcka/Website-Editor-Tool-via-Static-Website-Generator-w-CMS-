@@ -6,8 +6,57 @@ import TextTransition from "./TextTransition"
 
 import { mod } from "../../utils/math-helpers"
 
+import styled from "styled-components"
 import "./CarouselController.scss"
 import { timingSafeEqual } from "crypto"
+
+const CarouselStyleWrapper = styled.div`
+  width: inherit;
+  height: inherit;
+  overflow: hidden;
+  position: relative;
+
+  .selectors {
+    position: absolute;
+    display: flex;
+
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+
+    .carousel-selector {
+      display: block;
+      height: 25px;
+      width: 25px;
+      background-color: transparent;
+      border: 3px solid black;
+      border-radius: 25px;
+      margin: 0 7px;
+      z-index: 11;
+      cursor: pointer;
+      overflow: hidden;
+
+      // transition: all 1s;
+      &:before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform: translateY(100%);
+        z-index: 0;
+        background-color: ${props =>
+          props.themeColor ? props.themeColor : "mediumvioletred"};
+        opacity: 0.7;
+        transition: transform 1s;
+      }
+    }
+
+    .selector-active:before {
+      transform: translateY(0);
+    }
+  }
+`
 
 class Carouselcontroller extends Component {
   sliderInterval = null // interval that will dispatch a call to go to the next slide for every interval
@@ -91,10 +140,11 @@ class Carouselcontroller extends Component {
 
   render() {
     return (
-      <div className="slider-controller-container">
+      <CarouselStyleWrapper themeColor={this.props.themeColor}>
         <ImageTransition
           index={this.state.index}
           images={this.state.images}
+          themeColor={this.props.themeColor}
         />
 
         <TextTransition index={this.state.index} headers={this.state.headers} />
@@ -110,7 +160,7 @@ class Carouselcontroller extends Component {
             />
           ))}
         </div>
-      </div>
+      </CarouselStyleWrapper>
     )
   }
 }
@@ -132,6 +182,7 @@ Carouselcontroller.propTypes = {
       image: PropTypes.string.isRequired,
       header: PropTypes.string.isRequired,
       subheader: PropTypes.string.isRequired,
+      themeColor: PropTypes.string,
     })
   ).isRequired,
 }

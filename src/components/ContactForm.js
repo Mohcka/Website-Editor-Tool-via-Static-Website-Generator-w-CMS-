@@ -1,15 +1,15 @@
 import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
 
-import varStyles from "./styles/variables"
+import varStyles, { Title } from "./styles/FlakeTheme"
 
 const ContactForm = props => (
   <Container>
     <div id="contact-form">
       <div className="title">
-        <h2 style={varStyles.titleWrapperStyle}>
-          <span style={varStyles.titleStyle}>Contact Us</span>
-        </h2>
+        <Title>
+          <span>Contact Us</span>
+        </Title>
       </div>
       <form name="contact" method="POST" data-netlify="true">
         <div className="form-group">

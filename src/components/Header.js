@@ -4,25 +4,59 @@ import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet"
 
-import styleVars from "./styles/variables"
+import styled from "styled-components"
+import FlakeTheme from "./styles/FlakeTheme"
 import "./Header.scss"
 
 import CarouselWidget from "./CarouselWidget"
 
 import { slugify } from "../utils/text-helpers"
 
+const StyledActions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+
+  .contact-info,
+  .social-medias {
+    ul {
+      display: flex;
+      margin: 0 5px;
+    }
+
+    li {
+      margin: 0 5px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+
+    .contact-info ul {
+      display: flex;
+      flex-direction: column;
+
+      li {
+        margin: 3px 0;
+      }
+    }
+
+    .social-medias ul {
+      display: flex;
+      justify-content: center;
+      font-size: 1.2em;
+      li {
+        margin: 0 10px;
+      }
+    }
+  }
+`
+
 const Actions = props => (
-  <div style={styleVars.darkBackground}>
-    <div
-      className="actions"
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        maxWidth: "1000px",
-        margin: "0 auto",
-      }}
-    >
+  <div style={FlakeTheme.darkBackground}>
+    <StyledActions className="actions">
       {/* Contacts List */}
       <div className="contact-info">
         <ul>
@@ -53,7 +87,7 @@ const Actions = props => (
                     <a href={`${s.url}`} target="_blank">
                       <span
                         dangerouslySetInnerHTML={{ __html: s.icon }}
-                        style={{ color: styleVars.light }}
+                        style={{ color: FlakeTheme.light }}
                       ></span>
                     </a>
                   </div>
@@ -62,7 +96,7 @@ const Actions = props => (
           })}
         </ul>
       </div>
-    </div>
+    </StyledActions>
   </div>
 )
 
@@ -159,7 +193,7 @@ const Header = ({ siteTitle }) => {
     <header id="home" style={{}}>
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
       <Navbar pages={data.pages.edges[0].node.frontmatter} />
-      <CarouselWidget />
+      <CarouselWidget themeColor={FlakeTheme.primary}/>
     </header>
   )
 }
