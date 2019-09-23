@@ -34,5 +34,6 @@ sections:
     image: /uploads/images/facebook_logo-icon-jpeg.jpg
     title: My Title
     type: about
+fimage: ./images/opengraph.jpg
 ---
 
