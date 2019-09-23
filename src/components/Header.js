@@ -62,24 +62,27 @@ const Actions = props => (
         <ul>
           <li>
             <div className="address">
-              <i class="fas fa-map-marker-alt"></i> {props.social_info.address}
+              <i class="fas fa-map-marker-alt"></i>{" "}
+              {props.social_info.contact_info.address}
             </div>
           </li>
           <li>
             <div className="phone">
-              <i class="fas fa-phone"></i> {props.social_info.phone}
+              <i class="fas fa-phone"></i>{" "}
+              {props.social_info.contact_info.phone}
             </div>
           </li>
           <li>
             <div className="email">
-              <i class="fas fa-envelope"></i> {props.social_info.email}
+              <i class="fas fa-envelope"></i>{" "}
+              {props.social_info.contact_info.email}
             </div>
           </li>
         </ul>
       </div>
       <div className="social-medias">
         <ul>
-          {props.social_info.socialmedia.map(s => {
+          {Object.values(props.social_info.socia_media).map(s => {
             if (s.url)
               return (
                 <li>
@@ -158,15 +161,15 @@ const Header = ({ siteTitle }) => {
         edges {
           node {
             frontmatter {
-              address
-              email
-              phone
-              title
-              socialmedia {
-                title
-                type
-                url
-                icon
+              contact_info {
+                address
+                email
+                phone
+              }
+              social_media {
+                facebook
+                instagram
+                google_plus
               }
             }
           }

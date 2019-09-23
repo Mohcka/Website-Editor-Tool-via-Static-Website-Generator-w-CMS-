@@ -56,9 +56,26 @@ collections:
             name: "social-media"
             widget: "object"
             fields:
-              - { label: Facebook, name: facebook, wdiget: string }
-              - { label: "Google Plus", name: google_plus, wdiget: string }
-              - { label: Instagram, name: instagram, wdiget: string }
+              - label: Facebook
+                name: facebook
+                widget: object
+                  - { label: "URL", name: url, widget: string }
+                  - { label: "Type", name: type, widget: hidden, default: "fb" }
+                  - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-facebook-square"></i>" }
+              - label: Google
+                name: google
+                widget: object
+                  - { label: "URL", name: url, widget: string }
+                  - { label: "Type", name: type, widget: hidden, default: "gp" }
+                  - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-google-plus-square"></i>" }
+              - label: Instagram
+                name: instagram
+                widget: object
+                  - { label: "URL", name: url, widget: string }
+                  - { label: "Type", name: type, widget: hidden, default: "ig" }
+                  - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-instagram"></i>" }
+              - { label: "Google Plus", name: google_plus, widget: string }
+              - { label: Instagram, name: instagram, widget: string }
           - label: "Contact Information"
             name: contact-info
             widget: "object"
