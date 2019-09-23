@@ -1,4 +1,5 @@
 ---
+title: Settings
 social-media:
   facebook: facebook.com
   google_plus: google.com

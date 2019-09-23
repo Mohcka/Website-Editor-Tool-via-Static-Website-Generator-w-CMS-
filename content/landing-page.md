@@ -11,6 +11,6 @@ sections:
   - paragraph: Paragraph 2
     title: Section 2
     type: paragraph
-fimage: 
+fimage: ./images/opengraph.jpg
 ---
 

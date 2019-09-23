@@ -52,6 +52,7 @@ collections:
         label: "Settings"
         file: "content/settings.md"
         fields:
+          - { label: Title, name: title, widget: hidden, default: Settgings}
           - label: "Social Media"
             name: "social-media"
             widget: "object"
