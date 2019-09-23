@@ -60,7 +60,7 @@ collections:
             fields:
               - { label: "URL", name: url, widget: string }
               - { label: "Type", name: type, widget: hidden, default: "fb"}
-              - { label: "Icon", name: icon, widget: hidden, default: "<i class="fab fa-facebook-square"></i>" }
+              - { label: "Icon", name: icon, widget: hidden, default: "<i class=\"fab fa-facebook-square\"></i>" }
           - label: "Contact Information"
             name: contact-info
             widget: "object"
