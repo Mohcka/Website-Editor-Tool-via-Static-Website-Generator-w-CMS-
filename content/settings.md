@@ -11,8 +11,8 @@ social-media:
     type: ig
     url: instagram.com
 contact-info:
-  address: 123 Sesame St
-  email: my@email.com
-  phone: 1 800 800 8080
+  address: My Address
+  email: My Email
+  phone: My House
 ---
 
