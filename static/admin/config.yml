@@ -49,6 +49,7 @@ collections:
                 name: accordion
                 widget: object
                 fields:
+                  - { label: Title, name: title, widget: string, default: Bullet Points }
                   - label: Accordion Image
                     name: accordion_image
                     widget: image
