@@ -18,6 +18,7 @@ const StyledActions = styled.div`
   justify-content: space-between;
   width: 80%;
   margin: 0 auto;
+  font-size: 1.2rem;
 
   .contact-info,
   .social-medias {
@@ -46,10 +47,26 @@ const StyledActions = styled.div`
     .social-medias ul {
       display: flex;
       justify-content: center;
-      font-size: 1.2em;
+      font-size: 1.2rem;
       li {
         margin: 0 10px;
       }
+    }
+  }
+`
+
+const SocialMediasStyledWrapper = styled.div`
+  cursor: pointer;
+
+  span{
+    color: ${props => props.theme.light}
+    border-radius: 5px;
+    padding: 0 3px;
+    transition: color .2s, background-color .2s;
+
+    &:hover{
+    color: ${props => props.theme.dark};
+    background-color: ${props => props.theme.light};
     }
   }
 `
@@ -86,14 +103,11 @@ const Actions = props => (
             if (s.url)
               return (
                 <li>
-                  <div className={`${s.type}-icon icon`}>
+                  <SocialMediasStyledWrapper className={`${s.type}-icon icon`}>
                     <a href={`${s.url}`} rel="noreferrer" target="_blank">
-                      <span
-                        dangerouslySetInnerHTML={{ __html: s.icon }}
-                        style={{ color: FlakeTheme.light }}
-                      ></span>
+                      <span dangerouslySetInnerHTML={{ __html: s.icon }}></span>
                     </a>
-                  </div>
+                  </SocialMediasStyledWrapper>
                 </li>
               )
           })}
