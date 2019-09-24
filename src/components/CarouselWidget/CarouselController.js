@@ -7,8 +7,7 @@ import TextTransition from "./TextTransition"
 import { mod } from "../../utils/math-helpers"
 
 import styled from "styled-components"
-import "./CarouselController.scss"
-import { timingSafeEqual } from "crypto"
+// import "./CarouselController.scss"
 
 const CarouselStyleWrapper = styled.div`
   width: inherit;
@@ -37,7 +36,7 @@ const CarouselStyleWrapper = styled.div`
       cursor: pointer;
       overflow: hidden;
 
-      // transition: all 1s;
+      
       &:before {
         content: "";
         display: block;

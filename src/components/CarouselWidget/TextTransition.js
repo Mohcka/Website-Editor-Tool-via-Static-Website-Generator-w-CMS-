@@ -2,8 +2,38 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import anime from "animejs"
 
-import "./TextTransition.scss"
+// import "./TextTransition.scss"
+import styled from "styled-components"
 
+const StyledTextWrapper = styled.div`
+  height: inherit;
+  width: inherit;
+  display: flex;
+  position: relative;
+  z-index: 10;
+
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      color: whitesmoke;
+      margin-top: 7px;
+      &.textslide-title {
+        font-size: 3em;
+        text-align: center;
+      }
+
+      &.textslide-subtitle {
+        font-size: 1.5em;
+        text-align: center;
+      }
+    }
+  }
+`
 class TextTransition extends Component {
   animations = {
     flipIn: {
@@ -65,7 +95,7 @@ class TextTransition extends Component {
 
   render() {
     return (
-      <div className="text-slide-1-container">
+      <StyledTextWrapper>
         <div className="text-wrapper">
           <span className="textslide-title" style={{ fontWeight: "bold" }}>
             {this.state.header}
@@ -73,7 +103,7 @@ class TextTransition extends Component {
 
           <span className="textslide-subtitle">{this.state.subheader}</span>
         </div>
-      </div>
+      </StyledTextWrapper>
     )
   }
 }

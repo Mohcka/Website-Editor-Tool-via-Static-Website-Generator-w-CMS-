@@ -24,7 +24,7 @@ const dummySlides = [
 ]
 
 const CarouselWidget = props => (
-  <div style={{ height: "500px", width: "100%", backgroundColor: "blue" }}>
+  <div style={{ height: "500px", width: "100%"}}>
     <CarouselController
       slides={props.slides ? props.slides : dummySlides}
       themeColor={props.themeColor}
