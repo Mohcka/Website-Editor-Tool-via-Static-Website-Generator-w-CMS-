@@ -6,13 +6,15 @@ social-media:
     url: 'https://www.facebook.com/'
   - icon: <i class="fab fa-google-plus-g"></i>
     type: gp
-    url: twitch.tv
+    url: ''
   - icon: <i class="fab fa-instagram"></i>
     type: ig
     url: 'https://www.instagram.com/'
 contact-info:
-  address: 'Bean St. Cypress, CA'
-  email: beans@beans.com
+  address: '123 Sesame St'
+  email: my@email.com
   phone: (999) 888-7777
+css:
+js:
 ---
 

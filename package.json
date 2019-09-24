@@ -6,6 +6,7 @@
   "author": "Michael Walker <bandagedwolf95@gmail.com>",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
+    "@pake/react-color": "^3.0.0",
     "animejs": "^3.1.0",
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.3.1",
@@ -31,6 +32,7 @@
     "jquery": "^3.4.1",
     "materialize-css": "^1.0.0-rc.2",
     "netlify-cms-app": "^2.9.7",
+    "netlify-cms-widget-color": "^3.0.1",
     "node-sass": "^4.12.0",
     "popper.js": "^1.15.0",
     "prismjs": "^1.17.1",

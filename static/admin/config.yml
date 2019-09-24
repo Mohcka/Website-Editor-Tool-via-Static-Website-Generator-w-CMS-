@@ -18,7 +18,12 @@ collections:
         file: "content/landing-page.md"
         fields:
           - { label: Title, name: title, widget: hidden, default: Landing Page }
-          - { label: "Featured Image", name: "fimage", widget: hidden, default: "./images/opengraph.jpg" }
+          - {
+              label: "Featured Image",
+              name: "fimage",
+              widget: hidden,
+              default: "./images/opengraph.jpg",
+            }
           - label: "Sections"
             name: "sections"
             widget: "list"
@@ -49,16 +54,21 @@ collections:
                 name: accordion
                 widget: object
                 fields:
-                  - { label: Title, name: title, widget: string, default: Bullet Points }
+                  - {
+                      label: Title,
+                      name: title,
+                      widget: string,
+                      default: Bullet Points,
+                    }
                   - label: Accordion Image
                     name: accordion_image
                     widget: image
-                  - label: Accordian Items 
+                  - label: Accordian Items
                     name: collapsibles
                     widget: list
-                    fields: 
-                      - { label: Header, name: header, widget: string } 
-                      - { label: Body, name: body, widget: text } 
+                    fields:
+                      - { label: Header, name: header, widget: string }
+                      - { label: Body, name: body, widget: text }
   - name: "settings"
     label: "Settings"
     editor:
@@ -75,12 +85,22 @@ collections:
             allow_add: false
             fields:
               - { label: "URL", name: url, widget: string, required: false }
-              - { label: "Type", name: type, widget: hidden, default: "fb"}
-              - { label: "Icon", name: icon, widget: hidden, default: "<i class=\"fab fa-facebook-square\"></i>" }
+              - { label: "Type", name: type, widget: hidden, default: "fb" }
+              - {
+                  label: "Icon",
+                  name: icon,
+                  widget: hidden,
+                  default: '<i class="fab fa-facebook-square"></i>',
+                }
           - label: "Contact Information"
             name: contact-info
             widget: "object"
-            fields: 
-              - { label: "Address", name: address, widget: string}
-              - { label: "Phone Number", name: phone, widget: string}
-              - { label: "Email Address", name: email, widget: string}
+            fields:
+              - { label: "Address", name: address, widget: string }
+              - { label: "Phone Number", name: phone, widget: string }
+              - { label: "Email Address", name: email, widget: string }
+          - label: Color Picker
+            name: color_picker
+            widget: color
+          - { label: CSS, name: css, widget: text }
+          - { label: javascript, name: javascript, widget: text }
