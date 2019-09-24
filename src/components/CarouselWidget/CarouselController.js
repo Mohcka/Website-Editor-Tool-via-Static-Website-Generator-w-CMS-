@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 
 import ImageTransition from "./ImageTransition"
-import TextTransition from "./TextTransition"
+import TextTransition from "./UITransition"
 
 import { mod } from "../../utils/math-helpers"
 
