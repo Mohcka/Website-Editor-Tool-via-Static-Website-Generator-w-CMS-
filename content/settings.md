@@ -3,17 +3,16 @@ title: Settings
 social-media:
   - icon: <i class="fab fa-facebook-square"></i>
     type: fb
-    url: https://www.facebook.com/
+    url: 'https://www.facebook.com/'
   - icon: <i class="fab fa-google-plus-g"></i>
     type: gp
-    url: ''
+    url: twitch.tv
   - icon: <i class="fab fa-instagram"></i>
     type: ig
-    url: https://www.instagram.com/
+    url: 'https://www.instagram.com/'
 contact-info:
-  address: My House
-  email: My Email
-  phone: My Phone
-fimage: ./images/opengraph.jpg
+  address: 'Bean St. Cypress, CA'
+  email: beans@beans.com
+  phone: (999) 888-7777
 ---
 
