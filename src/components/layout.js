@@ -12,10 +12,39 @@ import { useStaticQuery, graphql } from "gatsby"
 import Head from "./Head"
 import Header from "./Header"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "../scss/main.scss"
+// import "../scss/main.scss"
 // import "./layout.css"
-import styled, { ThemeProvider } from "styled-components"
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import FlakeTheme from "./styles/FlakeTheme"
+
+const GlobalStyle = createGlobalStyle`
+body{
+  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+  
+    font-family: 'Montserrat',
+        sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    margin: 0;
+}
+
+li{
+    list-style: none;
+    margin: 0;
+}
+
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+}
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -31,6 +60,7 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={FlakeTheme}>
       <div>
+        <GlobalStyle />
         <Head />
         <Header siteTitle={data.site.siteMetadata.title} />
         <div style={{}}>
