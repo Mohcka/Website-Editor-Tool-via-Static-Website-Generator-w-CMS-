@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Michael Walker <bandagedwolf95@gmail.com>",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "animejs": "^3.1.0",
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.3.1",

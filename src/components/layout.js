@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Head from "./Head"
 import Header from "./Header"
 import "bootstrap/dist/css/bootstrap.min.css"
+import "@fortawesome/fontawesome-free/css/all.min.css"
 // import "../scss/main.scss"
 // import "./layout.css"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
@@ -21,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
 body{
   @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
   
-    font-family: 'Montserrat',
+    font-family: 'Montserrat', arial, helvetica, arial-black
         sans-serif;
 }
 
