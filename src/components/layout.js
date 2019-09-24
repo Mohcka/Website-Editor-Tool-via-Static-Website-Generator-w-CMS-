@@ -8,14 +8,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import Helmet from "react-helmet"
 
 import Head from "./Head"
 import Header from "./Header"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
-// import "../scss/main.scss"
-// import "./layout.css"
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
+import { ThemeProvider, createGlobalStyle } from "styled-components"
 import FlakeTheme from "./styles/FlakeTheme"
 
 const GlobalStyle = createGlobalStyle`
@@ -48,11 +47,33 @@ li{
 `
 
 const Layout = ({ children }) => {
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
+
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    {
       site {
         siteMetadata {
           title
+        }
+      }
+      allMarkdownRemark(
+        filter: { frontmatter: { title: { eq: "Settings" } } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              css
+              js
+            }
+          }
         }
       }
     }
@@ -66,12 +87,16 @@ const Layout = ({ children }) => {
         <Header siteTitle={data.site.siteMetadata.title} />
         <div style={{}}>
           <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          <footer>© {new Date().getFullYear()}</footer>
         </div>
+        <Helmet>
+          <style>
+            {`${data.allMarkdownRemark.edges[0].node.frontmatter.css}`}
+          </style>
+          <script>
+            {`${data.allMarkdownRemark.edges[0].node.frontmatter.js}`}
+          </script>
+        </Helmet>
       </div>
     </ThemeProvider>
   )
