@@ -16,7 +16,7 @@ const StyledActions = styled.div`
   justify-content: space-between;
   width: 80%;
   margin: 0 auto;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   .contact-info,
   .social-medias {
@@ -26,7 +26,7 @@ const StyledActions = styled.div`
     }
 
     li {
-      margin: 0 5px;
+      margin: 0 10px;
     }
   }
 
