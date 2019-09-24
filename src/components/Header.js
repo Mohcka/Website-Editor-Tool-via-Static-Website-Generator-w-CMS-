@@ -1,12 +1,10 @@
 import PropTypes from "prop-types"
-import React, { useEffect } from "react"
-import { Link } from "gatsby"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Helmet from "react-helmet"
+import { Nav, Navbar as BSNavbar } from "react-bootstrap"
 
 import styled from "styled-components"
 import FlakeTheme from "./styles/FlakeTheme"
-// import "./Header.scss"
 
 import CarouselWidget from "./CarouselWidget"
 
@@ -119,46 +117,19 @@ const Actions = props => (
 
 const Navbar = props => (
   <>
-    <nav className="navbar navbar-expand-lg navbar-light">
-      <a href="#home" className="navbar-brand" style={{ fontSize: "2rem" }}>
-        Company Name
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarContent"
-        aria-controls="navbarContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div className="collapse navbar-collapse" id="navbarContent">
-        <ul
-          className="navbar-nav ml-auto"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <li className="nav-item">
-            <a href="#home" className="nav-link">
-              HOME
-            </a>
-          </li>
+    <BSNavbar bg="light" expand="lg">
+      <BSNavbar.Brand href="#home">Company Name</BSNavbar.Brand>
+      <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
+      <BSNavbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
           {props.pages.sections.map((section, i) => (
-            <li key={i} className="nav-item">
-              <a href={`#${slugify(section.title)}`} className="nav-link">
-                {section.title.toUpperCase()}
-              </a>
-            </li>
+            <Nav.Link href={`#${slugify(section.title)}`}>
+              {section.title.toUpperCase()}
+            </Nav.Link>
           ))}
-        </ul>
-      </div>
-    </nav>
+        </Nav>
+      </BSNavbar.Collapse>
+    </BSNavbar>
   </>
 )
 
