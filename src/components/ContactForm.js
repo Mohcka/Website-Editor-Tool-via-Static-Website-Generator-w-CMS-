@@ -13,7 +13,6 @@ const ContactForm = props => (
       </div>
       <Form name="contact" method="POST" data-netlify="true">
           {/* This is needed for gatsby to let netlify process the form submission */}
-          
           <Form.Control type="hidden" name="form-name" value="contact"/>
 
           <Row>

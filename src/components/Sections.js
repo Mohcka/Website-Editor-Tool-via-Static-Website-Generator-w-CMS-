@@ -27,6 +27,7 @@ const AboutSection = props => {
                 justifyContent: "center",
                 height: "100%",
                 padding: "0 50px",
+                marginBottom: "50px",
               }}
             >
               <GImg
@@ -93,7 +94,7 @@ const AccordianSection = props => (
       </Col>
       <Col sm={12} md={6}>
         <Title>
-          <span>Bullet Points</span>
+          <span>{props.section.title}</span>
         </Title>
         <div className="accordian">
           <Accordion defaultActiveKey="0" style={{ paddingBottom: "5px" }}>
