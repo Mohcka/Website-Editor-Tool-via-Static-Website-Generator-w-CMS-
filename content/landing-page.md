@@ -45,7 +45,7 @@ sections:
     title: My Title
     type: about
   - type: accordion
-    title: OUr Promise
+    title: Our Promise
     accordion_image: ../static/uploads/images/opengraph.jpg
     collapsibles:
       - header: Promise 1
