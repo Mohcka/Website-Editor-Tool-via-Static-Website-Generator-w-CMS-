@@ -3,15 +3,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import GImg from "gatsby-image"
 // import GImgIE
 
-import {
-  Container,
-  Row,
-  Col,
-  Image as BSImage,
-  Card,
-  Accordion,
-  Button,
-} from "react-bootstrap"
+import { Container, Row, Col, Card, Accordion } from "react-bootstrap"
 
 import styled from "styled-components"
 import FlakeTheme, { Title } from "../components/styles/FlakeTheme"
@@ -58,7 +50,7 @@ const AboutSection = props => {
 }
 
 const ParagraphSection = props => (
-  <section>
+  <section id={`${slugify(props.section.title)}`}>
     <Container>
       <Title>
         <span>{props.section.title}</span>
@@ -86,7 +78,7 @@ const StyledAccordionCollapse = styled.div`
 `
 
 const AccordianSection = props => (
-  <section>
+  <section id={`${slugify(props.section.title)}`}>
     <Row style={{ backgroundColor: FlakeTheme.light }}>
       <Col md={6} className="d-none d-md-block">
         <div
