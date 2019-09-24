@@ -49,6 +49,9 @@ collections:
                 name: accordion
                 widget: object
                 fields:
+                  - label: Accordion Image
+                    name: accordion_image
+                    widget: image
                   - label: Accordian Items 
                     name: collapsibles
                     widget: list
