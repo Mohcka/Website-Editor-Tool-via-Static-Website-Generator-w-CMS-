@@ -20,7 +20,7 @@ import { slugify } from "../utils/text-helpers"
 
 const AboutSection = props => {
   return (
-    <div style={{ margin: "10px" }} id={`${slugify(props.section.title)}`}>
+    <section style={{ padding: "10px" }} id={`${slugify(props.section.title)}`}>
       <Container>
         <Title>
           <span>{props.section.title}</span>
@@ -39,7 +39,7 @@ const AboutSection = props => {
             >
               <GImg
                 fluid={props.section.image.childImageSharp.fluid}
-                style={{ flex: 1 }}
+                style={{ flex: 1, maxHeight: "400px" }}
                 imgStyle={{ objectFit: "contain" }}
               />
             </div>
@@ -53,28 +53,26 @@ const AboutSection = props => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   )
 }
 
-const StyledParagraph = styled.div``
-
 const ParagraphSection = props => (
-  <div
-    className="paragrpah-section"
-    id={`${slugify(props.section.title)}`}
-    style={props.style}
-  >
-    <Title>
-      <span>{props.section.title}</span>
-    </Title>
-    <div className="paragraph">
-      <span>{props.section.paragraph}</span>
-    </div>
-  </div>
+  <section>
+    <Container>
+      <Title>
+        <span>{props.section.title}</span>
+      </Title>
+      <p style={{ textAlign: "center" }}>
+        <span>{props.section.paragraph}</span>
+      </p>
+    </Container>
+  </section>
 )
 
 const StyledAccordionToggle = styled.div`
+  cursor: pointer;
+  user-select: none;
   margin: 10px;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 50px;
@@ -88,7 +86,7 @@ const StyledAccordionCollapse = styled.div`
 `
 
 const AccordianSection = props => (
-  <>
+  <section>
     <Row style={{ backgroundColor: FlakeTheme.light }}>
       <Col md={6} className="d-none d-md-block">
         <div
@@ -128,12 +126,21 @@ const AccordianSection = props => (
         </div>
       </Col>
     </Row>
-  </>
+  </section>
 )
 
 const sectionBackground = ind => ({
   background: ind % 2 == 1 ? FlakeTheme.light : "inherit",
 })
+
+const SectionsStyledWrapper = styled.div`
+  & > section {
+    margin: 0;
+    &:nth-child(2n) {
+      background-color: ${props => props.theme.light};
+    }
+  }
+`
 
 export default () => {
   let data = useStaticQuery(graphql`
@@ -169,7 +176,7 @@ export default () => {
                 }
                 accordion_image {
                   childImageSharp {
-                    fluid(maxWidth: 400) {
+                    fluid(maxWidth: 600) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }
@@ -192,7 +199,7 @@ export default () => {
   `)
 
   return (
-    <div className="sections">
+    <SectionsStyledWrapper className="sections">
       {data.allMarkdownRemark.edges[0].node.frontmatter.sections.map(
         (section, i) => {
           console.log(`Section ${i} is:`)
@@ -220,6 +227,6 @@ export default () => {
           else return <React.Fragment key={i}>?</React.Fragment>
         }
       )}
-    </div>
+    </SectionsStyledWrapper>
   )
 }
