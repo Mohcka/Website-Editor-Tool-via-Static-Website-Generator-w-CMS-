@@ -35,6 +35,12 @@ sections:
     image: ../static/uploads/images/facebook_logo-icon-jpeg.jpg
     title: My Title
     type: about
+  - type: accordion
+    collapsibles:
+      - title: Item 1
+        paragraph: Description 1
+      - title: Item 2
+        paragraph: Description 2
 fimage: ./images/opengraph.jpg
 ---
 
