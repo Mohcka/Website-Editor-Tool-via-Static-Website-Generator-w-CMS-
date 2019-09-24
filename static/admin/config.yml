@@ -45,6 +45,16 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Paragraph", name: "paragraph", widget: "string" }
+              - label: Accordion
+                name: accordion
+                widget: object
+                fields:
+                  - label: Accordian Items 
+                    name: collapsibles
+                    widget: list
+                    fields: 
+                      - { label: Header, name: header, widget: string } 
+                      - { label: Body, name: body, widget: text } 
   - name: "settings"
     label: "Settings"
     editor:
