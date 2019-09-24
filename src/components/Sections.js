@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import GImg from "gatsby-image"
 // import GImgIE
 
@@ -17,7 +17,6 @@ import styled from "styled-components"
 import FlakeTheme, { Title } from "../components/styles/FlakeTheme"
 
 import { slugify } from "../utils/text-helpers"
-
 
 const AboutSection = props => {
   return (
@@ -88,7 +87,7 @@ const StyledAccordionCollapse = styled.div`
   border-left: 1px solid ${props => props.theme.dark};
 `
 
-export const AccordianSection = ({ data }) => (
+const AccordianSection = props => (
   <>
     <Row style={{ backgroundColor: FlakeTheme.light }}>
       <Col md={6} className="d-none d-md-block">
@@ -96,7 +95,10 @@ export const AccordianSection = ({ data }) => (
           className="image "
           style={{ maxWidth: "100%", height: "100%", display: "flex" }}
         >
-          <GImg fluid={data.file.childImageSharp.fluid} style={{ flex: 1 }} />
+          <GImg
+            fluid={props.section.accordion_image.childImageSharp.fluid}
+            style={{ flex: 1 }}
+          />
         </div>
       </Col>
       <Col sm={12} md={6}>
@@ -105,32 +107,23 @@ export const AccordianSection = ({ data }) => (
         </Title>
         <div className="accordian">
           <Accordion defaultActiveKey="0" style={{ paddingBottom: "5px" }}>
-            <Card style={{ border: "none", background: "none" }}>
-              <Accordion.Toggle as={StyledAccordionToggle} eventKey="0">
-                <i class="fas fa-minus"></i>{" "}
-                <span style={{ color: FlakeTheme.primary, fontWeight: "bold" }}>
-                  Click me!
-                </span>
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="0">
-                <StyledAccordionCollapse>
-                  Hello! I'm the body
-                </StyledAccordionCollapse>
-              </Accordion.Collapse>
-            </Card>
-            <Card style={{ border: "none", background: "none" }}>
-              <Accordion.Toggle as={StyledAccordionToggle} eventKey="1">
-                <i class="fas fa-minus"></i>{" "}
-                <span style={{ color: FlakeTheme.primary, fontWeight: "bold" }}>
-                  Click me!
-                </span>
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="1">
-                <StyledAccordionCollapse>
-                  Hello! I'm the body
-                </StyledAccordionCollapse>
-              </Accordion.Collapse>
-            </Card>
+            {props.section.collapsibles.map((collapsible, i) => (
+              <Card style={{ border: "none", background: "none" }}>
+                <Accordion.Toggle as={StyledAccordionToggle} eventKey={`${i}`}>
+                  <i class="fas fa-minus"></i>{" "}
+                  <span
+                    style={{ color: FlakeTheme.primary, fontWeight: "bold" }}
+                  >
+                    {collapsible.header}
+                  </span>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey={`${i}`}>
+                  <StyledAccordionCollapse>
+                    {collapsible.body}
+                  </StyledAccordionCollapse>
+                </Accordion.Collapse>
+              </Card>
+            ))}
           </Accordion>
         </div>
       </Col>
@@ -142,33 +135,91 @@ const sectionBackground = ind => ({
   background: ind % 2 == 1 ? FlakeTheme.light : "inherit",
 })
 
-export default ({ data }) => (
-  <div className="sections">
-    {data.allMarkdownRemark.edges.map(edge =>
-      edge.node.frontmatter.sections.map((section, i) => {
-        console.log(`Section ${i} is:`)
+export default () => {
+  let data = useStaticQuery(graphql`
+    {
+      allMarkdownRemark(
+        filter: { frontmatter: { title: { eq: "Landing Page" } } }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+              fimage {
+                childImageSharp {
+                  id
+                }
+              }
+              sections {
+                title
+                type
+                description
+                paragraph
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 400) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+                collapsibles {
+                  header
+                  body
+                }
+                accordion_image {
+                  childImageSharp {
+                    fluid(maxWidth: 400) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
 
-        console.log(section)
+      file(relativePath: { eq: "opengraph.jpeg" }) {
+        childImageSharp {
+          id
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
 
-        if (section.type === "about")
-          return (
-            <React.Fragment key={i}>
-              <AboutSection section={section} style={sectionBackground(i)} />
-            </React.Fragment>
-          )
+  return (
+    <div className="sections">
+      {data.allMarkdownRemark.edges[0].node.frontmatter.sections.map(
+        (section, i) => {
+          console.log(`Section ${i} is:`)
+          console.log(section)
 
-        if (section.type === "paragraph")
-          return (
-            <React.Fragment key={i}>
-              <ParagraphSection
-                section={section}
-                style={sectionBackground(i)}
-              />
-            </React.Fragment>
-          )
-        else return <React.Fragment key={i}>?</React.Fragment>
-      })
-    )}
-  </div>
-)
+          if (section.type === "about")
+            return (
+              <React.Fragment key={i}>
+                <AboutSection section={section} style={sectionBackground(i)} />
+              </React.Fragment>
+            )
 
+          if (section.type === "paragraph")
+            return (
+              <React.Fragment key={i}>
+                <ParagraphSection
+                  section={section}
+                  style={sectionBackground(i)}
+                />
+              </React.Fragment>
+            )
+
+          if (section.type === "accordion")
+            return <AccordianSection section={section}></AccordianSection>
+          else return <React.Fragment key={i}>?</React.Fragment>
+        }
+      )}
+    </div>
+  )
+}
