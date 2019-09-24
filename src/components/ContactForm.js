@@ -26,7 +26,7 @@ const ContactForm = props => (
             <Col>
               <Form.Group controlId="phoneField">
                 <Form.Label>Telephone</Form.Label>
-                <Form.Control type="email" placeholder="555 555 555" />
+                <Form.Control type="tel" placeholder="555 555 555" />
               </Form.Group>
             </Col>
           </Row>
