@@ -49,7 +49,7 @@ class Test extends Component {
           id={forID}
           value={this.state.background}
           className={classNameWrapper}
-          disabled="disabled"
+          readOnly
           ref={}
         //   onChange={e => onChange(e.target.value)}
         />
