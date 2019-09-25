@@ -1,8 +1,18 @@
 import CMS from "netlify-cms-app"
 import React, { Component } from "react"
+import { SketchPicker } from "react-color"
 import PropTypes from "prop-types"
 
 class Test extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      background: "#fff",
+    }
+
+    this.handleColorChange = this.handleColorChange.bind(this)
+  }
+
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     forID: PropTypes.string,
@@ -14,17 +24,30 @@ class Test extends Component {
     value: "",
   }
 
+  componentDidMount() {
+    this.setState({ background: this.props.value || "#fff" })
+  }
+
+  handleColorChange = color => {
+    this.setState({ background })
+  }
+
   render() {
-    const { forID, value, onChange, classNameWrapper } = this.props
+    const { forID, classNameWrapper } = this.props
 
     return (
-      <input
-        type="text"
-        id={forID}
-        defaultValue={value || ""}
-        className={classNameWrapper}
-        onChange={e => onChange(e.target.value)}
-      />
+      <>
+        <SketchPicker
+          color={this.state.background}
+          onChangeComplete={this.handleColorChange}
+        />
+        <input
+          type="text"
+          id={forID}
+          defaultValue={this.state.background}
+          className={classNameWrapper}
+        />
+      </>
     )
   }
 }
