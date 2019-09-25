@@ -101,6 +101,6 @@ collections:
               - { label: "Email Address", name: email, widget: string }
           - label: Color Picker
             name: color_picker
-            widget: color
+            widget: test
           - { label: CSS, name: css, widget: text }
           - { label: javascript, name: javascript, widget: text }

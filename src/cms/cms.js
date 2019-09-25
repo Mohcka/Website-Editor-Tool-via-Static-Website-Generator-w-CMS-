@@ -1,5 +1,6 @@
 import CMS from "netlify-cms-app"
-import "react"
-import * as ColorWidget from "netlify-cms-widget-color"
+import React from "react"
 
-CMS.registerWidget("color", ColorWidget.Control)
+const Test = props => <input type="text" defaultValue={`${props.vlaue}`} />
+
+CMS.registerWidget("test", Test)
