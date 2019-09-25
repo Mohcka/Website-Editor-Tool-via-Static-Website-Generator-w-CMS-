@@ -46,7 +46,7 @@ class Test extends Component {
         <input
           type="text"
           id={forID}
-          vlaue={this.state.background}
+          value={this.state.background}
           className={classNameWrapper}
         />
       </>
