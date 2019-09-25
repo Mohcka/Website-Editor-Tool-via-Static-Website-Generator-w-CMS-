@@ -30,12 +30,13 @@ class Test extends Component {
 
   handleColorChange = color => {
     this.setState({ background: color.hex })
+    this.props.onChange(color.hex)
     console.log(this.state.background);
-    
+
   }
 
   render() {
-    const { forID, classNameWrapper, onChange } = this.props
+    const { forID, classNameWrapper } = this.props
 
     return (
       <>
@@ -48,7 +49,9 @@ class Test extends Component {
           id={forID}
           value={this.state.background}
           className={classNameWrapper}
-          onChange={e => onChange(e.target.value)}
+          disabled="disabled"
+          ref={}
+        //   onChange={e => onChange(e.target.value)}
         />
       </>
     )
