@@ -32,6 +32,6 @@ export const Title = styled.h2`
 
   span {
     padding: 0 10px;
-    color: ${props => props.theme.dark};
+    color: ${props => props.theme.primary};
   }
 `
