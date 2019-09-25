@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { SketchPicker } from "react-color"
 import PropTypes from "prop-types"
 
-class Test extends Component {
+class ColorPickerWidget extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,16 +45,15 @@ class Test extends Component {
           onChangeComplete={this.handleColorChange}
         />
         <input
-          type="text"
+          type="hidden"
           id={forID}
           value={this.state.background}
           className={classNameWrapper}
           readOnly
-        //   onChange={e => onChange(e.target.value)}
         />
       </>
     )
   }
 }
 
-CMS.registerWidget("test", Test)
+CMS.registerWidget("colorpicker", ColorPickerWidget)

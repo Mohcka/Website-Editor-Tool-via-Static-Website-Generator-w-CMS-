@@ -99,8 +99,8 @@ collections:
               - { label: "Address", name: address, widget: string }
               - { label: "Phone Number", name: phone, widget: string }
               - { label: "Email Address", name: email, widget: string }
-          - label: Color Picker
-            name: color_picker
-            widget: test
+          - label: Primary Color
+            name: primary_color
+            widget: colorpicker
           - { label: CSS, name: css, widget: text, required: false }
-          - { label: javascript, name: javascript, widget: text, required: false }
+          - { label: javascript, name: js, widget: text, required: false }
