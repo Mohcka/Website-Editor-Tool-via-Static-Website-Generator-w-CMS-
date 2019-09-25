@@ -138,6 +138,12 @@ Navbar.propTypes = {
   pages: PropTypes.object.isRequired,
 }
 
+const CarouselStyledWrapper = styled.div`
+  .carousel-indicators li{
+    background-color: ${props => props.theme.primary};
+  }
+`
+
 const Header = ({ siteTitle }) => {
   const data = useStaticQuery(graphql`
     {
@@ -172,6 +178,8 @@ const Header = ({ siteTitle }) => {
                 title
               }
               carousel {
+                title
+                subtitle
                 image {
                   childImageSharp {
                     fluid(maxWidth: 1900) {
@@ -187,42 +195,42 @@ const Header = ({ siteTitle }) => {
     }
   `)
 
-  console.log()
+  console.log(data)
 
   return (
-    <header id="home" style={{}}>
+    <header id="home">
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
       <Navbar pages={data.pages.edges[0].node.frontmatter} />
       {/* <CarouselWidget themeColor={FlakeTheme.primary} /> */}
-      <Carousel>
-        {data.pages.edges[0].node.frontmatter.carousel.map(image => {
-          console.log(image)
-          return (
-            <Carousel.Item>
-              <div
-                style={{
-                  height: "700px",
-                  display: "flex",
-                }}
-              >
-                <GImg
-                  fluid={image.image.childImageSharp.fluid}
-                  style={{ flex: 1 }}
-                  imgStyle={{
-                    objectFit: "cover"
+      <CarouselStyledWrapper>
+        <Carousel>
+          {data.pages.edges[0].node.frontmatter.carousel.map(slide => {
+            console.log(slide)
+            return (
+              <Carousel.Item>
+                <div
+                  style={{
+                    height: "700px",
+                    display: "flex",
                   }}
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
-                </Carousel.Caption>
-              </div>
-            </Carousel.Item>
-          )
-        })}
-      </Carousel>
+                >
+                  <GImg
+                    fluid={slide.image.childImageSharp.fluid}
+                    style={{ flex: 1 }}
+                    imgStyle={{
+                      objectFit: "cover",
+                    }}
+                  />
+                  <Carousel.Caption>
+                    <h3 style={{ fontSize: "2rem" }}>{slide.title}</h3>
+                    <p style={{ fontSize: "1.5rem" }}>{slide.subtitle}</p>
+                  </Carousel.Caption>
+                </div>
+              </Carousel.Item>
+            )
+          })}
+        </Carousel>
+      </CarouselStyledWrapper>
     </header>
   )
 }

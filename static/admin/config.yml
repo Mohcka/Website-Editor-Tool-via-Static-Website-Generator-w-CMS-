@@ -24,6 +24,13 @@ collections:
               widget: hidden,
               default: "./images/opengraph.jpg",
             }
+          - label: Carousel
+            name: carousel
+            widget: list
+            fields:
+                - { label: Image, name: image, widget: image }
+                - { label: Title, name: title, widget: string }
+                - { label: Subtitle, name: subtitle, widget: string }
           - label: "Sections"
             name: "sections"
             widget: "list"
