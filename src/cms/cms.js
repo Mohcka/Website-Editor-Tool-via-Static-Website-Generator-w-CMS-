@@ -31,8 +31,7 @@ class ColorPickerWidget extends Component {
   handleColorChange = color => {
     this.setState({ background: color.hex })
     this.props.onChange(color.hex)
-    console.log(this.state.background);
-
+    console.log(this.state.background)
   }
 
   render() {
@@ -46,6 +45,7 @@ class ColorPickerWidget extends Component {
         />
         <input
           type="text"
+          style={{ display: "none" }}
           id={forID}
           value={this.state.background}
           className={classNameWrapper}
