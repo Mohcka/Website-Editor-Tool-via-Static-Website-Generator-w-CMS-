@@ -14,7 +14,7 @@ contact-info:
   address: 123 Sesame St
   email: my@email.com
   phone: (999) 888-7777
-primary_color: '#f5a623'
+primary_color: '#4a90e2'
 css: ''
 js: ''
 ---
