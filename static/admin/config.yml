@@ -102,5 +102,5 @@ collections:
           - label: Color Picker
             name: color_picker
             widget: test
-          - { label: CSS, name: css, widget: text }
-          - { label: javascript, name: javascript, widget: text }
+          - { label: CSS, name: css, widget: text, required: false }
+          - { label: javascript, name: javascript, widget: text, required: false }

@@ -35,7 +35,7 @@ class Test extends Component {
   }
 
   render() {
-    const { forID, classNameWrapper } = this.props
+    const { forID, classNameWrapper, onChange } = this.props
 
     return (
       <>
@@ -48,6 +48,7 @@ class Test extends Component {
           id={forID}
           value={this.state.background}
           className={classNameWrapper}
+          onChange={e => onChange(e.target.value)}
         />
       </>
     )
