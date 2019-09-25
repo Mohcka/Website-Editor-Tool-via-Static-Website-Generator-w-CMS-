@@ -72,12 +72,15 @@ const Layout = ({ children }) => {
             frontmatter {
               css
               js
+              primary_color
             }
           }
         }
       }
     }
   `)
+
+  FlakeTheme.primary = data.allMarkdownRemark.edges[0].node.frontmatter.primary_color
 
   return (
     <ThemeProvider theme={FlakeTheme}>
