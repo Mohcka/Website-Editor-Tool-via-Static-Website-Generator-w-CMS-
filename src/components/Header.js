@@ -198,18 +198,27 @@ const Header = ({ siteTitle }) => {
         {data.pages.edges[0].node.frontmatter.carousel.map(image => {
           console.log(image)
           return (
-            <Carousel.Item style={{ maxHeight: "600px" }}>
-              <GImg
-                fluid={image.image.childImageSharp.fluid}
-                style={{ flex: 1, maxHeight: "400px" }}
-                imgStyle={{ objectFit: "contain" }}
-              />
-              <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
-              </Carousel.Caption>
+            <Carousel.Item>
+              <div
+                style={{
+                  height: "700px",
+                  display: "flex",
+                }}
+              >
+                <GImg
+                  fluid={image.image.childImageSharp.fluid}
+                  style={{ flex: 1 }}
+                  imgStyle={{
+                    objectFit: "cover"
+                  }}
+                />
+                <Carousel.Caption>
+                  <h3>First slide label</h3>
+                  <p>
+                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                  </p>
+                </Carousel.Caption>
+              </div>
             </Carousel.Item>
           )
         })}
