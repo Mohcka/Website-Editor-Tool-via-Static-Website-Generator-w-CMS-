@@ -29,7 +29,7 @@ class Test extends Component {
   }
 
   handleColorChange = color => {
-    this.setState({ background })
+    this.setState({ background: color })
   }
 
   render() {
