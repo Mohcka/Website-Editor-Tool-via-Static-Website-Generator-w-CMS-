@@ -50,7 +50,6 @@ class Test extends Component {
           value={this.state.background}
           className={classNameWrapper}
           readOnly
-          ref={}
         //   onChange={e => onChange(e.target.value)}
         />
       </>
