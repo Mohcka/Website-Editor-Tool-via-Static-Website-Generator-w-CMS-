@@ -145,6 +145,12 @@ class Carouselcontroller extends Component {
           images={this.state.images}
           themeColor={this.props.themeColor}
         />
+        {/* 
+        <Slide>
+          <SlideImage></SlideImage>
+          <SlideUI></SlideUI>
+        </Slide> 
+        */}
 
         <TextTransition index={this.state.index} headers={this.state.headers} />
 

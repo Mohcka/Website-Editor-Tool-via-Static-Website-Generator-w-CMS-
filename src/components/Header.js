@@ -1,7 +1,8 @@
 import PropTypes from "prop-types"
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Nav, Navbar as BSNavbar } from "react-bootstrap"
+import GImg from "gatsby-image"
+import { Nav, Navbar as BSNavbar, Carousel } from "react-bootstrap"
 
 import styled from "styled-components"
 import FlakeTheme from "./styles/FlakeTheme"
@@ -170,6 +171,15 @@ const Header = ({ siteTitle }) => {
               sections {
                 title
               }
+              carousel {
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 1900) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -177,11 +187,33 @@ const Header = ({ siteTitle }) => {
     }
   `)
 
+  console.log()
+
   return (
     <header id="home" style={{}}>
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
       <Navbar pages={data.pages.edges[0].node.frontmatter} />
-      <CarouselWidget themeColor={FlakeTheme.primary} />
+      {/* <CarouselWidget themeColor={FlakeTheme.primary} /> */}
+      <Carousel>
+        {data.pages.edges[0].node.frontmatter.carousel.map(image => {
+          console.log(image)
+          return (
+            <Carousel.Item style={{ maxHeight: "600px" }}>
+              <GImg
+                fluid={image.image.childImageSharp.fluid}
+                style={{ flex: 1, maxHeight: "400px" }}
+                imgStyle={{ objectFit: "contain" }}
+              />
+              <Carousel.Caption>
+                <h3>First slide label</h3>
+                <p>
+                  Nulla vitae elit libero, a pharetra augue mollis interdum.
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          )
+        })}
+      </Carousel>
     </header>
   )
 }
