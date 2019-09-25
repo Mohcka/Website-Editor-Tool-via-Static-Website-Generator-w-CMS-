@@ -45,7 +45,7 @@ class ColorPickerWidget extends Component {
           onChangeComplete={this.handleColorChange}
         />
         <input
-          type="hidden"
+          type="text"
           id={forID}
           value={this.state.background}
           className={classNameWrapper}
