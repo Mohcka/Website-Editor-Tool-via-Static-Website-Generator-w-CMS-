@@ -30,6 +30,8 @@ class Test extends Component {
 
   handleColorChange = color => {
     this.setState({ background: color.hex })
+    console.log(this.state.background);
+    
   }
 
   render() {
