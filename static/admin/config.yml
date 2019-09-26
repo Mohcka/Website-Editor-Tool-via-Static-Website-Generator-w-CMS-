@@ -29,8 +29,8 @@ collections:
             widget: list
             fields:
                 - { label: Image, name: image, widget: image }
-                - { label: Title, name: title, widget: string }
-                - { label: Subtitle, name: subtitle, widget: string }
+                - { label: Title, name: title, widget: string, required: false }
+                - { label: Subtitle, name: subtitle, widget: string, required: false }
           - label: "Sections"
             name: "sections"
             widget: "list"
