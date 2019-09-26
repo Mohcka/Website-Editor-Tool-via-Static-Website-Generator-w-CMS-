@@ -5,6 +5,7 @@ import GImg from "gatsby-image"
 import { Nav, Navbar as BSNavbar, Carousel } from "react-bootstrap"
 
 import styled from "styled-components"
+import Color from "color"
 import FlakeTheme from "./styles/FlakeTheme"
 
 import CarouselWidget from "./CarouselWidget"
@@ -139,7 +140,25 @@ Navbar.propTypes = {
 }
 
 const CarouselStyledWrapper = styled.div`
-  .carousel-indicators li{
+  .image-wrapper {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      opacity: 0.3;
+      top: 0;
+      left: 0;
+      background-color: ${props =>
+        Color(props.theme.primary)
+          .darken(0.5)
+          .hex()};
+      z-index: 1;
+    }
+  }
+
+  .carousel-indicators li {
     background-color: ${props => props.theme.primary};
   }
 `
@@ -194,9 +213,7 @@ const Header = ({ siteTitle }) => {
       }
     }
   `)
-
-  console.log(data)
-
+  
   return (
     <header id="home">
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
@@ -205,22 +222,25 @@ const Header = ({ siteTitle }) => {
       <CarouselStyledWrapper>
         <Carousel>
           {data.pages.edges[0].node.frontmatter.carousel.map(slide => {
-            console.log(slide)
             return (
               <Carousel.Item>
                 <div
                   style={{
                     height: "700px",
-                    display: "flex",
                   }}
                 >
-                  <GImg
-                    fluid={slide.image.childImageSharp.fluid}
-                    style={{ flex: 1 }}
-                    imgStyle={{
-                      objectFit: "cover",
-                    }}
-                  />
+                  <div
+                    className="image-wrapper"
+                    style={{ height: "100%", width: "100%", display: "flex" }}
+                  >
+                    <GImg
+                      fluid={slide.image.childImageSharp.fluid}
+                      style={{ flex: 1 }}
+                      imgStyle={{
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
                   <Carousel.Caption>
                     <h3 style={{ fontSize: "2rem" }}>{slide.title}</h3>
                     <p style={{ fontSize: "1.5rem" }}>{slide.subtitle}</p>
