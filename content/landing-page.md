@@ -11,7 +11,7 @@ carousel:
   - image: ../static/uploads/images/carousel-3.jpg
     subtitle: Subtitle 3
     title: Title 3
-  - image: /uploads/images/opengraph.jpg
+  - image: ../satic/uploads/images/opengraph.jpg
     subtitle: New Subtitle
     title: New Title
   - image: /uploads/images/human_eye_-_blue.jpg
