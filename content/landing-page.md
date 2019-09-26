@@ -43,6 +43,6 @@ sections:
     type: accordion
   - paragraph: two
     title: one
-    type: paragraph
+    type: hidden
 ---
 

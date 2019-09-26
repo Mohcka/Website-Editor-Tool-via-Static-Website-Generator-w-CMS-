@@ -57,6 +57,12 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Paragraph", name: "paragraph", widget: "string" }
+              - label: "Paragraph"
+                name: "paragraph"
+                widget: hidden
+                fields:
+                  - { label: "Title", name: "title", widget: "string", default: '' }
+                  - { label: "Paragraph", name: "paragraph", widget: "string", default: '' }
               - label: Accordion
                 name: accordion
                 widget: object
