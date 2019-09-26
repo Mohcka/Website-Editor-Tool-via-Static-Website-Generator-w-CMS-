@@ -36,16 +36,21 @@ module.exports = {
         name: `content`,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-netlify-cms-paths`,
+    //   options: {
+    //     // Path to your Netlify CMS config file
+    //     cmsConfig: `/static/admin/config.yml`,
+    //   },
+    // },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          // // gatsby-remark-relative-images must
+          // // go before gatsby-remark-images
           {
-            resolve: `gatsby-plugin-netlify-cms-paths`,
-            options: {
-              // Path to your Netlify CMS config file
-              cmsConfig: `/static/admin/config.yml`,
-            },
+            resolve: `gatsby-remark-relative-images`,
           },
           {
             resolve: `gatsby-remark-images`,
@@ -62,6 +67,7 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          // `gatsby-plugin-netlify-cms-paths`,
         ],
       },
     },
