@@ -41,5 +41,8 @@ sections:
         header: Lorem Ipsum 2
     title: Bullet Points
     type: accordion
+  - paragraph: two
+    title: one
+    type: paragraph
 ---
 
