@@ -1,14 +1,16 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+
 import { Link, graphql, useStaticQuery } from "gatsby"
 import GImg from "gatsby-image"
 // import GImgIE
 
 import { Container, Row, Col, Card, Accordion } from "react-bootstrap"
+import Macy from "macy"
 
 import styled from "styled-components"
-import FlakeTheme, { Title } from "../components/styles/FlakeTheme"
+import FlakeTheme, { Title } from "../../components/styles/FlakeTheme"
 
-import { slugify } from "../utils/text-helpers"
+import { slugify } from "../../utils/text-helpers"
 
 const AboutSection = props => {
   return (
@@ -50,7 +52,7 @@ const AboutSection = props => {
   )
 }
 
-const ParagraphSection = props => (
+const Paragraph = props => (
   <section id={`${slugify(props.section.title)}`}>
     <Container>
       <Title>
@@ -63,23 +65,36 @@ const ParagraphSection = props => (
   </section>
 )
 
-const StyledAccordionToggle = styled.div`
-  cursor: pointer;
-  user-select: none;
-  margin: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 50px;
-  background-color: white;
-  padding: 10px;
-`
-const StyledAccordionCollapse = styled.div`
-  margin-left: 30px;
-  padding: 15px;
-  border-left: 1px solid ${props => props.theme.dark};
+const StyledAccordionWrapper = styled.div`
+  .accordion {
+    padding-bottom: 5px;
+  }
+
+  .accordion-toggle {
+    cursor: pointer;
+    user-select: none;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 50px;
+    background-color: white;
+    padding: 10px;
+    text-align: left;
+
+    span {
+      color: ${props => props.theme.primary};
+      font-weight: bold;
+    }
+  }
+
+  .accordion-collapse {
+    margin-left: 30px;
+    padding: 15px;
+    border-left: 1px solid ${props => props.theme.dark};
+  }
 `
 
 const AccordianSection = props => (
-  <section id={`${slugify(props.section.title)}`}>
+  <StyledAccordionWrapper id={`${slugify(props.section.title)}`}>
     <Row style={{ backgroundColor: FlakeTheme.light }}>
       <Col md={6} className="d-none d-md-block">
         <div
@@ -93,25 +108,24 @@ const AccordianSection = props => (
         </div>
       </Col>
       <Col sm={12} md={6}>
-        <Title>
+        <Title style={{ textAlign: "left" }}>
           <span>{props.section.title}</span>
         </Title>
         <div className="accordian">
-          <Accordion defaultActiveKey="0" style={{ paddingBottom: "5px" }}>
+          <Accordion defaultActiveKey="0" className="accordion">
             {props.section.collapsibles.map((collapsible, i) => (
               <Card style={{ border: "none", background: "none" }}>
-                <Accordion.Toggle as={StyledAccordionToggle} eventKey={`${i}`}>
-                  <i class="fas fa-minus"></i>{" "}
-                  <span
-                    style={{ color: FlakeTheme.primary, fontWeight: "bold" }}
-                  >
-                    {collapsible.header}
-                  </span>
+                <Accordion.Toggle
+                  className="accordion-toggle"
+                  eventKey={`${i}`}
+                >
+                  <i class="fas fa-minus"></i> <span>{collapsible.header}</span>
                 </Accordion.Toggle>
-                <Accordion.Collapse eventKey={`${i}`}>
-                  <StyledAccordionCollapse>
-                    {collapsible.body}
-                  </StyledAccordionCollapse>
+                <Accordion.Collapse
+                  className="accordion-collapse"
+                  eventKey={`${i}`}
+                >
+                  <>{collapsible.body}</>
                 </Accordion.Collapse>
               </Card>
             ))}
@@ -119,8 +133,50 @@ const AccordianSection = props => (
         </div>
       </Col>
     </Row>
-  </section>
+  </StyledAccordionWrapper>
 )
+
+const Gallery = props => {
+  let imgs = []
+  // for (let i = 0; i < 3; i++) {
+  //   let width = 200 + Math.floor(Math.random() * 200)
+  //   let height = 200 + Math.floor(Math.random() * 200)
+  //   imgs.push(
+      // <div key={i} style={{ width: width, height: height, display: "flex" }}>
+      //   <GImg
+      //     src={`https://images.unsplash.com/photo-1569493086584-33e0b36f3145?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`}
+      //     style={{ objectFit: "cover", width: "100%", height: "100%", flex: 1 }}
+      //   />
+      // </div>
+  //   )
+  // }
+
+  console.log(props.images);
+  
+  const [images, setImages] = useState(
+    props.images.map((imgurl, i) => (
+      <div key={i} style={{ display: "flex" }}>
+        <GImg
+          fluid={imgurl}
+          style={{ objectFit: "cover", width: "100%", height: "100%", flex: 1 }}
+        />
+      </div>
+    ))
+  )
+
+  useEffect(() => {
+    Macy({
+      container: "#masonry-gallery",
+    })
+  })
+
+  return (
+    <Container>
+      <Title>Gallery</Title>
+      <div id="masonry-gallery">{images}</div>
+    </Container>
+  )
+}
 
 const sectionBackground = ind => ({
   background: ind % 2 == 1 ? FlakeTheme.light : "inherit",
@@ -163,6 +219,15 @@ export default () => {
                     }
                   }
                 }
+                images {
+                  image {
+                    childImageSharp {
+                      fluid(maxWidth: 400) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
                 collapsibles {
                   header
                   body
@@ -191,35 +256,36 @@ export default () => {
     }
   `)
 
+  let { sections } = data.allMarkdownRemark.edges[0].node.frontmatter
+
   return (
     <SectionsStyledWrapper className="sections">
-      {data.allMarkdownRemark.edges[0].node.frontmatter.sections.map(
-        (section, i) => {
-          console.log(`Section ${i} is:`)
-          console.log(section)
+      {sections.map((section, i) => {
+        console.log(`Section ${i} is:`)
+        console.log(section)
 
-          if (section.type === "about")
-            return (
-              <React.Fragment key={i}>
-                <AboutSection section={section} style={sectionBackground(i)} />
-              </React.Fragment>
-            )
+        if (section.type === "about")
+          return (
+            <React.Fragment key={i}>
+              <AboutSection section={section} style={sectionBackground(i)} />
+            </React.Fragment>
+          )
 
-          if (section.type === "paragraph")
-            return (
-              <React.Fragment key={i}>
-                <ParagraphSection
-                  section={section}
-                  style={sectionBackground(i)}
-                />
-              </React.Fragment>
-            )
+        if (section.type === "paragraph")
+          return (
+            <React.Fragment key={i}>
+              <Paragraph section={section} style={sectionBackground(i)} />
+            </React.Fragment>
+          )
 
-          if (section.type === "accordion")
-            return <AccordianSection section={section}></AccordianSection>
-          else return <React.Fragment key={i}>?</React.Fragment>
-        }
-      )}
+        if (section.type === "accordion")
+          return <AccordianSection section={section}></AccordianSection>
+
+        if (section.type === "gallery")
+          return <Gallery images={section.images.map(image => image.image.childImageSharp.fluid)}/>
+        else return <React.Fragment key={i}>?</React.Fragment>
+      })}
+      <Gallery />
     </SectionsStyledWrapper>
   )
 }

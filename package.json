@@ -31,6 +31,7 @@
     "gatsby-transformer-remark": "^2.6.21",
     "gatsby-transformer-sharp": "^2.2.13",
     "jquery": "^3.4.1",
+    "macy": "^2.5.0",
     "materialize-css": "^1.0.0-rc.2",
     "netlify-cms-app": "^2.9.7",
     "netlify-cms-widget-color": "^3.0.1",
@@ -43,10 +44,12 @@
     "react-color": "^2.17.3",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
+    "react-loadable": "^5.5.0",
     "styled-components": "^4.3.2",
     "webpack": "^4.39.3"
   },
   "devDependencies": {
+    "holderjs": "^2.9.6",
     "lit-html": "^1.1.2",
     "prettier": "^1.18.2"
   },

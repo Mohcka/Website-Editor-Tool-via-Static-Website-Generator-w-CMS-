@@ -61,5 +61,10 @@ sections:
     image: /uploads/images/construction-late-payments.jpg
     title: About
     type: about
+  - type: gallery
+    title: 'Gallery'
+    images:
+      - image: /uploads/images/construction-late-payments.jpg
+      - image: /uploads/images/carousel-1.jpg
+      - image: /uploads/images/carousel-2.jpg
 ---
-

@@ -40,6 +40,10 @@ exports.onCreateWebpackConfig = ({ actions, stage, loaders }) => {
           test: require.resolve("jquery"),
           use: loaders.null(),
         },
+        {
+          test: require.resolve('macy'),
+          use: loaders.null(),
+        },
       ],
     }
   }
