@@ -281,11 +281,11 @@ export default () => {
         if (section.type === "accordion")
           return <AccordianSection section={section}></AccordianSection>
 
-        if (section.type === "gallery")
-          return <Gallery images={section.images.map(image => image.image.childImageSharp.fluid)}/>
+        // if (section.type === "gallery")
+        //   return <Gallery images={section.images.map(image => image.image.childImageSharp.fluid)}/>
         else return <React.Fragment key={i}>?</React.Fragment>
       })}
-      <Gallery />
+      {/* <Gallery /> */}
     </SectionsStyledWrapper>
   )
 }
