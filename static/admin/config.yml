@@ -83,7 +83,8 @@ collections:
                   - label: Promotion List
                     name: promotion_list
                     widget: list
-                      - { label: Promotion, name: promotion, widget: string}
+                    fields: 
+                      - { label: Promotion, name: promotion, widget: string }
   - name: "settings"
     label: "Settings"
     editor:
