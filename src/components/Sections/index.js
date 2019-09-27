@@ -178,6 +178,11 @@ const Gallery = props => {
   )
 }
 
+const Promotions = props => {
+
+  return (<Title>Promotions</Title>)
+}
+
 const sectionBackground = ind => ({
   background: ind % 2 == 1 ? FlakeTheme.light : "inherit",
 })
@@ -279,10 +284,12 @@ export default () => {
           )
 
         if (section.type === "accordion")
-          return <AccordianSection section={section}></AccordianSection>
+          return <AccordianSection section={section}/>
 
         // if (section.type === "gallery")
         //   return <Gallery images={section.images.map(image => image.image.childImageSharp.fluid)}/>
+
+        if(section.type === "promotions") return <Promotions></Promotions>
         else return <React.Fragment key={i}>?</React.Fragment>
       })}
       {/* <Gallery /> */}
