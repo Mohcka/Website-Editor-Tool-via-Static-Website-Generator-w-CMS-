@@ -82,7 +82,7 @@ collections:
                 fields:
                   - label: Icon 
                     name: icon
-                    widget: fontawesome
+                    widget: fontawesome-solid
   - name: "settings"
     label: "Settings"
     editor:
