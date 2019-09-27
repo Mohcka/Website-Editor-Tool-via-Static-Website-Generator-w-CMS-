@@ -7,7 +7,7 @@ import PropTypes from "prop-types"
 import { SketchPicker } from "react-color"
 
 CMS.registerWidget(
-  "fontawesome",
+  "fontawesome-solid",
   FontawesomeWidget.Solid,
   FontawesomeWidget.Preview
 );
