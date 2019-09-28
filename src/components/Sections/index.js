@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react"
 
 import { Link, graphql, useStaticQuery } from "gatsby"
 import GImg from "gatsby-image"
-// import GImgIE
+
+import Loadable from "react-loadable"
 
 import { Container, Row, Col, Card, Accordion } from "react-bootstrap"
-import Macy from "macy"
-
 import styled from "styled-components"
 import FlakeTheme, { Title } from "../../components/styles/FlakeTheme"
 
@@ -95,88 +94,55 @@ const StyledAccordionWrapper = styled.div`
 
 const AccordianSection = props => (
   <StyledAccordionWrapper id={`${slugify(props.section.title)}`}>
-    <Row style={{ backgroundColor: FlakeTheme.light }}>
-      <Col md={6} className="d-none d-md-block">
-        <div
-          className="image "
-          style={{ maxWidth: "100%", height: "100%", display: "flex" }}
-        >
-          <GImg
-            fluid={props.section.accordion_image.childImageSharp.fluid}
-            style={{ flex: 1 }}
-          />
-        </div>
-      </Col>
-      <Col sm={12} md={6}>
-        <Title style={{ textAlign: "left" }}>
-          <span>{props.section.title}</span>
-        </Title>
-        <div className="accordian">
-          <Accordion defaultActiveKey="0" className="accordion">
-            {props.section.collapsibles.map((collapsible, i) => (
-              <Card style={{ border: "none", background: "none" }}>
-                <Accordion.Toggle
-                  className="accordion-toggle"
-                  eventKey={`${i}`}
-                >
-                  <i class="fas fa-minus"></i> <span>{collapsible.header}</span>
-                </Accordion.Toggle>
-                <Accordion.Collapse
-                  className="accordion-collapse"
-                  eventKey={`${i}`}
-                >
-                  <>{collapsible.body}</>
-                </Accordion.Collapse>
-              </Card>
-            ))}
-          </Accordion>
-        </div>
-      </Col>
-    </Row>
+    <Container fluid>
+      <Row style={{ backgroundColor: FlakeTheme.light }}>
+        <Col md={6} className="d-none d-md-block">
+          <div
+            className="image "
+            style={{ maxWidth: "100%", height: "100%", display: "flex" }}
+          >
+            <GImg
+              fluid={props.section.accordion_image.childImageSharp.fluid}
+              style={{ flex: 1 }}
+            />
+          </div>
+        </Col>
+        <Col sm={12} md={6}>
+          <Title style={{ textAlign: "left" }}>
+            <span>{props.section.title}</span>
+          </Title>
+          <div className="accordian">
+            <Accordion defaultActiveKey="0" className="accordion">
+              {props.section.collapsibles.map((collapsible, i) => (
+                <Card style={{ border: "none", background: "none" }}>
+                  <Accordion.Toggle
+                    className="accordion-toggle"
+                    eventKey={`${i}`}
+                  >
+                    <i class="fas fa-minus"></i>{" "}
+                    <span>{collapsible.header}</span>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse
+                    className="accordion-collapse"
+                    eventKey={`${i}`}
+                  >
+                    <>{collapsible.body}</>
+                  </Accordion.Collapse>
+                </Card>
+              ))}
+            </Accordion>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   </StyledAccordionWrapper>
 )
 
-const Gallery = props => {
-  let imgs = []
-  // for (let i = 0; i < 3; i++) {
-  //   let width = 200 + Math.floor(Math.random() * 200)
-  //   let height = 200 + Math.floor(Math.random() * 200)
-  //   imgs.push(
-      // <div key={i} style={{ width: width, height: height, display: "flex" }}>
-      //   <GImg
-      //     src={`https://images.unsplash.com/photo-1569493086584-33e0b36f3145?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`}
-      //     style={{ objectFit: "cover", width: "100%", height: "100%", flex: 1 }}
-      //   />
-      // </div>
-  //   )
-  // }
-
-  console.log(props.images);
-  
-  const [images, setImages] = useState(
-    props.images.map((imgurl, i) => (
-      <div key={i} style={{ display: "flex" }}>
-        <GImg
-          fluid={imgurl}
-          style={{ objectFit: "cover", width: "100%", height: "100%", flex: 1 }}
-        />
-      </div>
-    ))
-  )
-
-  useEffect(() => {
-    Macy({
-      container: "#masonry-gallery",
-    })
-  })
-
-  return (
-    <Container>
-      <Title>Gallery</Title>
-      <div id="masonry-gallery">{images}</div>
-    </Container>
-  )
-}
+//* Load Gallery
+const Gallery = Loadable({
+  loader: () => import("./MasonryGallery"),
+  loading: () => <div>Loading...</div>,
+})
 
 const sectionBackground = ind => ({
   background: ind % 2 == 1 ? FlakeTheme.light : "inherit",
@@ -219,7 +185,7 @@ export default () => {
                     }
                   }
                 }
-                images {
+                gallery {
                   image {
                     childImageSharp {
                       fluid(maxWidth: 400) {
@@ -282,10 +248,15 @@ export default () => {
           return <AccordianSection section={section}></AccordianSection>
 
         if (section.type === "gallery")
-          return <Gallery images={section.images.map(image => image.image.childImageSharp.fluid)}/>
+          return (
+              <Gallery
+                gallery_imgs={section.gallery.map(gallery_item => (
+                  <GImg fluid={gallery_item.image.childImageSharp.fluid} />
+                ))}
+              />
+          )
         else return <React.Fragment key={i}>?</React.Fragment>
       })}
-      <Gallery />
     </SectionsStyledWrapper>
   )
 }

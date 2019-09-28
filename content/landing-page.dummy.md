@@ -12,12 +12,15 @@ sections:
     type: about
   - accordion_image: /uploads/images/human_eye_-_blue.jpg
     collapsibles:
-      - body: ''
+      - body: ""
         header: Lorem Ipsum 1
     title: Bullet Points
     type: accordion
   - paragraph: two
     title: one
     type: paragraph
+  - gallery:
+    - image: /uploads/images/carousel-1.jpg
 ---
 
+<!--This serves as dummy data for gatsby incase any of these fields don't exist in the real page, so it won't throw an error-->

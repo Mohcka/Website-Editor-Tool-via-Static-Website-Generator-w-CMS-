@@ -29,9 +29,9 @@ export const Title = styled.h2`
   text-align: center;
   font-weight: bold;
   padding: 40px 0;
+  color: ${props => props.theme.primary};
 
   span {
     padding: 0 10px;
-    color: ${props => props.theme.primary};
   }
 `
