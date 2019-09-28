@@ -76,6 +76,15 @@ collections:
                     fields:
                       - { label: Header, name: header, widget: string }
                       - { label: Body, name: body, widget: text }
+              - label: Promotions
+                name: promotions
+                widget: object
+                fields:
+                  - label: Promotion List
+                    name: promotion_list
+                    widget: list
+                    fields: 
+                      - { label: Promotion, name: promotion, widget: string }
   - name: "settings"
     label: "Settings"
     editor:

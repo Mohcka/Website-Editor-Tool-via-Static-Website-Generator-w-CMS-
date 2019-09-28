@@ -6,14 +6,13 @@ import styled from "styled-components"
 import { Title } from "../styles/FlakeTheme"
 import Macy from "macy"
 
-const StyledTest = styled.div`
-  background: red
-`
+const ImageModal = props => {
+  const triggerPopout = "ok"
 
-const PopoutImage = props => {
-  const triggerPopout
-
-
+  return (
+    <div className="modal-background">
+    </div>
+  )
 }
 
 const Gallery = props => {
