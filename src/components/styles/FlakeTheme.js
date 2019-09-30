@@ -1,10 +1,22 @@
-import { graphql, useStaticQuery } from "gatsby"
-
 import styled from "styled-components"
 
 let dark = "#222",
   light = "#F7F7F7",
   primary = "#0264D7"
+
+const breakPoints = {
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1140,
+}
+
+const device = {
+  mobileSM: `(min-width: ${breakPoints.sm}px)`,
+  mobileMD: `(min-width: ${breakPoints.md}px)`,
+  desktopLG: `(min-width: ${breakPoints.lg}px)`,
+  desktopXL: `(min-width: ${breakPoints.xl}px)`,
+}
 
 export default {
   dark: dark,
@@ -25,7 +37,7 @@ export default {
   },
 }
 
-export const Title = styled.h2`
+const Title = styled.h2`
   text-align: center;
   font-weight: bold;
   padding-bottom: 40px;
@@ -35,3 +47,5 @@ export const Title = styled.h2`
     padding: 0 10px;
   }
 `
+
+export { Title, breakPoints, device }

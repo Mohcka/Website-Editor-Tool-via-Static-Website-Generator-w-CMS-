@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 
 import styled from "styled-components"
 import Color from "color"
-import { Title } from "../styles/FlakeTheme"
+import { Title, breakPoints } from "../styles/FlakeTheme"
 import Macy from "macy"
 
 const StyledImageModalWrapper = styled.div`
@@ -124,10 +124,18 @@ const StyledGalleryWrapper = styled.div`
 const Gallery = props => {
   const [modalImage, setModalImage] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
+  // Breakpoint rules for macy, the value stands for the number of columns 
+  // that whill hold each image
+  const breakAtRules = {}
+  breakAtRules[breakPoints.lg] = 2
+  breakAtRules[breakPoints.sm] = 1
 
   useEffect(() => {
     Macy({
       container: "#masonry-gallery",
+      breakAt: {
+        ...breakAtRules,
+      },
     })
   })
 

@@ -21,7 +21,7 @@ const Gallery = Loadable({
   loading: () => <div>Loading...</div>,
 })
 
-// Load Testimonials
+//* Load Testimonials
 const Testimonials = Loadable({
   loader: () => import("./Testimonials"),
   loading: () => <div>Loading...</div>,
