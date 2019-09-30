@@ -1,16 +1,9 @@
 import CMS from "netlify-cms-app"
-import * as FontawesomeWidget from "netlify-cms-widget-fontawesome"
 
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 
 import { SketchPicker } from "react-color"
-
-CMS.registerWidget(
-  "fontawesome-solid",
-  FontawesomeWidget.Solid,
-  FontawesomeWidget.Preview
-);
 
 class ColorPickerWidget extends Component {
   constructor(props) {
