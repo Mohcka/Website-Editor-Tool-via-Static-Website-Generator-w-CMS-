@@ -10,7 +10,8 @@ import styled from "styled-components"
 import FlakeTheme, { Title } from "../../components/styles/FlakeTheme"
 
 // import Testimonials from './Testimonials'
-// import Promotions from "./Promotions"
+import Promotions from "./Promotions"
+import ContactForm from "../ContactForm"
 
 import { slugify } from "../../utils/text-helpers"
 
@@ -20,15 +21,15 @@ const Gallery = Loadable({
   loading: () => <div>Loading...</div>,
 })
 
-// Load Testimonials 
+// Load Testimonials
 const Testimonials = Loadable({
   loader: () => import("./Testimonials"),
-  loading: () => <div>Loading...</div>
+  loading: () => <div>Loading...</div>,
 })
 
 const AboutSection = props => {
   return (
-    <section style={{ padding: "10px" }} id={`${slugify(props.section.title)}`}>
+    <section id={`${slugify(props.section.title)}`}>
       <Container>
         <Title>
           <span>{props.section.title}</span>
@@ -102,7 +103,7 @@ const StyledAccordionWrapper = styled.div`
 
   .accordion-collapse {
     margin-left: 30px;
-    padding: 15px;
+    padding: 0 15px;
     border-left: 1px solid ${props => props.theme.dark};
   }
 `
@@ -111,7 +112,7 @@ const AccordianSection = props => (
   <StyledAccordionWrapper id={`${slugify(props.section.title)}`}>
     <Container fluid>
       <Row style={{ backgroundColor: FlakeTheme.light }}>
-        <Col md={6} className="d-none d-md-block">
+        <Col lg={6} className="d-none d-lg-block">
           <div
             className="image "
             style={{ maxWidth: "100%", height: "100%", display: "flex" }}
@@ -122,8 +123,8 @@ const AccordianSection = props => (
             />
           </div>
         </Col>
-        <Col sm={12} md={6}>
-          <Title style={{ textAlign: "left" }}>
+        <Col xs={12} lg={6}>
+          <Title style={{ textAlign: "left", paddingTop: "20px" }}>
             <span>{props.section.title}</span>
           </Title>
           <div className="accordian">
@@ -141,7 +142,7 @@ const AccordianSection = props => (
                     className="accordion-collapse"
                     eventKey={`${i}`}
                   >
-                    <>{collapsible.body}</>
+                    <div>{collapsible.body}</div>
                   </Accordion.Collapse>
                 </Card>
               ))}
@@ -153,10 +154,6 @@ const AccordianSection = props => (
   </StyledAccordionWrapper>
 )
 
-const Promotions = props => {
-  return <Title>Promotions</Title>
-}
-
 const sectionBackground = ind => ({
   background: ind % 2 == 1 ? FlakeTheme.light : "inherit",
 })
@@ -164,9 +161,14 @@ const sectionBackground = ind => ({
 const SectionsStyledWrapper = styled.div`
   & > section {
     margin: 0;
-    padding: 50px 10px;
+    padding: 70px 0;
     &:nth-child(2n) {
       background-color: ${props => props.theme.light};
+    }
+
+    &.dark-bg {
+      background: ${props => props.theme.dark};
+      color: ${props => props.theme.light};
     }
   }
 `
@@ -194,7 +196,7 @@ export default () => {
                 paragraph
                 image {
                   childImageSharp {
-                    fluid(maxWidth: 400) {
+                    fluid(maxWidth: 1200) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }
@@ -218,6 +220,15 @@ export default () => {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }
+                }
+
+                testimonials {
+                  author
+                  testimonial
+                }
+                promotions {
+                  title
+                  description
                 }
               }
             }
@@ -263,7 +274,7 @@ export default () => {
 
         if (section.type === "gallery")
           return (
-            <section>
+            <section id={section.title.toLowerCase()}>
               <Title>{section.title}</Title>
               <Gallery
                 gallery_imgs={section.gallery.map(gallery_item => (
@@ -276,10 +287,25 @@ export default () => {
               />
             </section>
           )
+
+        if (section.type === "testimonials")
+          return (
+            <section id={section.title.toLowerCase()} className="dark-bg">
+              <Testimonials testimonials={section.testimonials} />
+            </section>
+          )
+
+        if (section.type === "promotions")
+          return (
+            <section id={section.title.toLowerCase()} className="dark-bg">
+              <Promotions promotions={section.promotions} />
+            </section>
+          )
         else return <React.Fragment key={i}>?</React.Fragment>
       })}
-      <Testimonials />
-      <Promotions />
+      <section id="contact-form" style={{ background: "none" }}>
+        <ContactForm />
+      </section>
     </SectionsStyledWrapper>
   )
 }

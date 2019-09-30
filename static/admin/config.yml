@@ -84,8 +84,15 @@ collections:
                     name: promotion_list
                     widget: list
                     fields: 
-                      - { label: Promotion, name: promotion, widget: string }
-  - name: "settings"
+                      - { label: Title, name: title, widget: string }
+                      - { label: Promotion, name: promotion, widget: text }
+  
+              - label: Testimonials
+                name: testimonials
+                widget: object
+                fields:
+                  - { label: Author, name: author, widget: string }
+                  - { label: Testimonial, name: testimonial, widget: text }
     label: "Settings"
     editor:
       preview: false

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from 'prop-types'
 import anime from "animejs"
 import { tns } from "tiny-slider/src/tiny-slider"
 import "tiny-slider/dist/tiny-slider.css"
@@ -8,8 +9,8 @@ import { mod } from "../../utils/math-helpers"
 
 const StyledTestimonialWrapper = styled.div`
     position: relative;
-    background: ${props => props.theme.dark}
-    color: ${props => props.theme.light}
+    // background: ${props => props.theme.dark}
+    // color: ${props => props.theme.light}
     text-align: center;
     padding: 50px 0;
 
@@ -50,48 +51,6 @@ const StyledNavControlWrapper = styled.div`
   }
 `
 
-const dummyData = [
-  {
-    testimonial: `Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.`,
-    author: "John Smith",
-  },
-  {
-    testimonial: `Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.`,
-    author: "John Smith",
-  },
-  {
-    testimonial: `Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.`,
-    author: "John Smith",
-  },
-]
-
 const Testimonial = props => (
   <div className="testimonial">
     <div className="testimonial-body">
@@ -106,7 +65,7 @@ const Testimonial = props => (
 class Testimonials extends Component {
   slider = null
 
-  state = { current: dummyData[0], ind: 0 }
+  state = {}
 
   componentDidMount() {
     this.slider = tns({
@@ -127,7 +86,7 @@ class Testimonials extends Component {
       <StyledTestimonialWrapper>
         <div className="testimonial-slides-wrapper">
           <div className="testimonial-slides">
-            {dummyData.map((data, i) => (
+            {this.props.testimonials.map((data, i) => (
               <div key={i}>
                 <Testimonial
                   testimonial={data.testimonial}
@@ -148,6 +107,13 @@ class Testimonials extends Component {
       </StyledTestimonialWrapper>
     )
   }
+}
+
+Testimonials.propTypes = {
+  testimonials: PropTypes.shape({
+    author: PropTypes.string,
+    testimonial: PropTypes.string
+  }).isRequired
 }
 
 export default Testimonials
