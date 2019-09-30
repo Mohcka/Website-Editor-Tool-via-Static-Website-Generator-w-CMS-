@@ -9,7 +9,22 @@ import { Container, Row, Col, Card, Accordion } from "react-bootstrap"
 import styled from "styled-components"
 import FlakeTheme, { Title } from "../../components/styles/FlakeTheme"
 
+// import Testimonials from './Testimonials'
+// import Promotions from "./Promotions"
+
 import { slugify } from "../../utils/text-helpers"
+
+//* Load Gallery
+const Gallery = Loadable({
+  loader: () => import("./MasonryGallery"),
+  loading: () => <div>Loading...</div>,
+})
+
+// Load Testimonials 
+const Testimonials = Loadable({
+  loader: () => import("./Testimonials"),
+  loading: () => <div>Loading...</div>
+})
 
 const AboutSection = props => {
   return (
@@ -138,15 +153,8 @@ const AccordianSection = props => (
   </StyledAccordionWrapper>
 )
 
-//* Load Gallery
-const Gallery = Loadable({
-  loader: () => import("./MasonryGallery"),
-  loading: () => <div>Loading...</div>,
-})
-
 const Promotions = props => {
-
-  return (<Title>Promotions</Title>)
+  return <Title>Promotions</Title>
 }
 
 const sectionBackground = ind => ({
@@ -156,6 +164,7 @@ const sectionBackground = ind => ({
 const SectionsStyledWrapper = styled.div`
   & > section {
     margin: 0;
+    padding: 50px 10px;
     &:nth-child(2n) {
       background-color: ${props => props.theme.light};
     }
@@ -193,7 +202,7 @@ export default () => {
                 gallery {
                   image {
                     childImageSharp {
-                      fluid(maxWidth: 400) {
+                      fluid(maxWidth: 1200) {
                         ...GatsbyImageSharpFluid_withWebp
                       }
                     }
@@ -205,7 +214,7 @@ export default () => {
                 }
                 accordion_image {
                   childImageSharp {
-                    fluid(maxWidth: 600) {
+                    fluid(maxWidth: 1200) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }
@@ -250,21 +259,27 @@ export default () => {
           )
 
         if (section.type === "accordion")
-          return <AccordianSection section={section}/>
-
-        // if (section.type === "gallery")
-        //   return <Gallery images={section.images.map(image => image.image.childImageSharp.fluid)}/>
+          return <AccordianSection section={section} />
 
         if (section.type === "gallery")
           return (
+            <section>
+              <Title>{section.title}</Title>
               <Gallery
                 gallery_imgs={section.gallery.map(gallery_item => (
-                  <GImg fluid={gallery_item.image.childImageSharp.fluid} />
+                  <GImg
+                    fluid={gallery_item.image.childImageSharp.fluid}
+                    imgStyle={{ objectFit: "contain" }}
+                    style={{ maxHeight: "100%", maxWidth: "100%" }}
+                  />
                 ))}
               />
+            </section>
           )
         else return <React.Fragment key={i}>?</React.Fragment>
       })}
+      <Testimonials />
+      <Promotions />
     </SectionsStyledWrapper>
   )
 }

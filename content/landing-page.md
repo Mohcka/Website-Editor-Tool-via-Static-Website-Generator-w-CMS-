@@ -64,7 +64,17 @@ sections:
   - type: gallery
     title: 'Gallery'
     gallery:
-      - image: /uploads/images/construction-late-payments.jpg
+      - image: /uploads/images/vertical_2.jpg
       - image: /uploads/images/carousel-1.jpg
       - image: /uploads/images/carousel-2.jpg
+      - image: /uploads/images/vertical_2.jpg
+      - image: /uploads/images/vertical_img.jpg
+      - image: /uploads/images/construction-late-payments.jpg
+      - image: /uploads/images/carousel-1.jpg
+      - image: /uploads/images/carousel-1.jpg
+      - image: /uploads/images/carousel-2.jpg
+      - image: /uploads/images/vertical_2.jpg
+      - image: /uploads/images/construction-late-payments.jpg
+      - image: /uploads/images/carousel-1.jpg
+      - image: /uploads/images/vertical_img.jpg
 ---
