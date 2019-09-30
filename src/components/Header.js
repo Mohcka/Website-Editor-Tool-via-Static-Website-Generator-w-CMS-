@@ -58,15 +58,15 @@ const StyledActions = styled.div`
 const SocialMediasStyledWrapper = styled.div`
   cursor: pointer;
 
-  span{
-    color: ${props => props.theme.light}
+  span {
+    color: ${props => props.theme.light};
     border-radius: 5px;
     padding: 0 3px;
-    transition: color .2s, background-color .2s;
+    transition: color 0.2s, background-color 0.2s;
 
-    &:hover{
-    color: ${props => props.theme.dark};
-    background-color: ${props => props.theme.light};
+    &:hover {
+      color: ${props => props.theme.dark};
+      background-color: ${props => props.theme.light};
     }
   }
 `
@@ -120,7 +120,16 @@ const Actions = props => (
 const Navbar = props => (
   <>
     <BSNavbar bg="light" expand="lg">
-      <BSNavbar.Brand href="#home">Company Name</BSNavbar.Brand>
+      <BSNavbar.Brand
+        href="#home"
+        style={{
+          fontWeight: "bold",
+          fontSize: "1.7em",
+          color: FlakeTheme.primary,
+        }}
+      >
+        Placeholder
+      </BSNavbar.Brand>
       <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
       <BSNavbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
@@ -213,7 +222,7 @@ const Header = ({ siteTitle }) => {
       }
     }
   `)
-  
+
   return (
     <header id="home">
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
