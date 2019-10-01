@@ -10,6 +10,8 @@ import styled from "styled-components"
 import FlakeTheme, { Title } from "../../components/styles/FlakeTheme"
 
 // import Testimonials from './Testimonials'
+import AboutSection from "./About"
+import AccordianSection from "./Accordion"
 import Promotions from "./Promotions"
 import ContactForm from "../ContactForm"
 
@@ -25,137 +27,6 @@ const Gallery = Loadable({
 const Testimonials = Loadable({
   loader: () => import("./Testimonials"),
   loading: () => <div>Loading...</div>,
-})
-
-const AboutSection = props => {
-  return (
-    <section id={`${slugify(props.section.title)}`}>
-      <Container>
-        <Title>
-          <span>{props.section.title}</span>
-        </Title>
-        <Row>
-          <Col xl={6} lg={12}>
-            <div
-              className="image-container"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%",
-                padding: "0 50px",
-                marginBottom: "50px",
-              }}
-            >
-              <GImg
-                fluid={props.section.image.childImageSharp.fluid}
-                style={{ flex: 1, maxHeight: "400px" }}
-                imgStyle={{ objectFit: "contain" }}
-              />
-            </div>
-          </Col>
-          <Col xl={6} lg={12}>
-            <div
-              className="description"
-              dangerouslySetInnerHTML={{ __html: props.section.description }}
-            ></div>
-            <div className="paragraph">{props.section.paragraph}</div>
-          </Col>
-        </Row>
-      </Container>
-    </section>
-  )
-}
-
-const Paragraph = props => (
-  <section id={`${slugify(props.section.title)}`}>
-    <Container>
-      <Title>
-        <span>{props.section.title}</span>
-      </Title>
-      <p style={{ textAlign: "center" }}>
-        <span>{props.section.paragraph}</span>
-      </p>
-    </Container>
-  </section>
-)
-
-const StyledAccordionWrapper = styled.div`
-  .accordion {
-    padding-bottom: 5px;
-  }
-
-  .accordion-toggle {
-    cursor: pointer;
-    user-select: none;
-    margin: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 50px;
-    background-color: white;
-    padding: 10px;
-    text-align: left;
-
-    span {
-      color: ${props => props.theme.primary};
-      font-weight: bold;
-    }
-  }
-
-  .accordion-collapse {
-    margin-left: 30px;
-    padding: 0 15px;
-    border-left: 1px solid ${props => props.theme.dark};
-  }
-`
-
-const AccordianSection = props => (
-  <StyledAccordionWrapper id={`${slugify(props.section.title)}`}>
-    <Container fluid>
-      <Row style={{ backgroundColor: FlakeTheme.light }}>
-        <Col lg={6} className="d-none d-lg-block">
-          <div
-            className="image "
-            style={{ maxWidth: "100%", height: "100%", display: "flex" }}
-          >
-            <GImg
-              fluid={props.section.accordion_image.childImageSharp.fluid}
-              style={{ flex: 1 }}
-            />
-          </div>
-        </Col>
-        <Col xs={12} lg={6}>
-          <Title style={{ textAlign: "left", paddingTop: "20px" }}>
-            <span>{props.section.title}</span>
-          </Title>
-          <div className="accordian">
-            <Accordion defaultActiveKey="0" className="accordion">
-              {props.section.collapsibles.map((collapsible, i) => (
-                <Card style={{ border: "none", background: "none" }}>
-                  <Accordion.Toggle
-                    className="accordion-toggle"
-                    eventKey={`${i}`}
-                  >
-                    <i class="fas fa-minus"></i>{" "}
-                    <span>{collapsible.header}</span>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse
-                    className="accordion-collapse"
-                    eventKey={`${i}`}
-                  >
-                    <div>{collapsible.body}</div>
-                  </Accordion.Collapse>
-                </Card>
-              ))}
-            </Accordion>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  </StyledAccordionWrapper>
-)
-
-const sectionBackground = ind => ({
-  background: ind % 2 == 1 ? FlakeTheme.light : "inherit",
 })
 
 const SectionsStyledWrapper = styled.div`
@@ -255,26 +126,42 @@ export default () => {
         console.log(`Section ${i} is:`)
         console.log(section)
 
-        if (section.type === "about")
+        if (section.type === "about") {
+          let aboutImage = (
+            <GImg
+              fluid={section.image.childImageSharp.fluid}
+              style={{ flex: 1, maxHeight: "400px" }}
+              imgStyle={{ objectFit: "contain" }}
+            />
+          )
           return (
             <React.Fragment key={i}>
-              <AboutSection section={section} style={sectionBackground(i)} />
+              <AboutSection
+                title={section.title}
+                image={aboutImage}
+                description={section.description}
+              />
             </React.Fragment>
           )
+        }
 
-        if (section.type === "paragraph")
+        if (section.type === "accordion") {
+          let accordionImage = (
+            <GImg fluid={section.accordion_image.childImageSharp.fluid} />
+          )
+
           return (
-            <React.Fragment key={i}>
-              <Paragraph section={section} style={sectionBackground(i)} />
-            </React.Fragment>
+            <AccordianSection
+              title={section.title}
+              collapsibles={section.collapsibles}
+              image={accordionImage}
+            />
           )
-
-        if (section.type === "accordion")
-          return <AccordianSection section={section} />
+        }
 
         if (section.type === "gallery")
           return (
-            <section id={section.title.toLowerCase()}>
+            <section id={slugify(section.title)}>
               <Title>{section.title}</Title>
               <Gallery
                 gallery_imgs={section.gallery.map(gallery_item => (
@@ -290,14 +177,14 @@ export default () => {
 
         if (section.type === "testimonials")
           return (
-            <section id={section.title.toLowerCase()} className="dark-bg">
+            <section id={slugify(section.title)} className="dark-bg">
               <Testimonials testimonials={section.testimonials} />
             </section>
           )
 
         if (section.type === "promotions")
           return (
-            <section id={section.title.toLowerCase()} className="dark-bg">
+            <section id={slugify(section.title)} className="dark-bg">
               <Promotions promotions={section.promotions} />
             </section>
           )
