@@ -76,6 +76,11 @@ collections:
                     fields:
                       - { label: Header, name: header, widget: string }
                       - { label: Body, name: body, widget: text }
+              - label: Gallery
+                name: gallery
+                widget: list
+                fields:
+                  - { label: Gallery Image, name: image, type: image}
               - label: Promotions
                 name: promotions
                 widget: object
@@ -86,7 +91,6 @@ collections:
                     fields: 
                       - { label: Title, name: title, widget: string }
                       - { label: Promotion, name: promotion, widget: text }
-  
               - label: Testimonials
                 name: testimonials
                 widget: object
@@ -104,17 +108,38 @@ collections:
           - { label: Title, name: title, widget: hidden, default: Settings }
           - label: "Social Media"
             name: "social-media"
-            widget: "list"
-            allow_add: false
+            widget: "object"
             fields:
-              - { label: "URL", name: url, widget: string, required: false }
-              - { label: "Type", name: type, widget: hidden, default: "fb" }
-              - {
-                  label: "Icon",
-                  name: icon,
-                  widget: hidden,
-                  default: '<i class="fab fa-facebook-square"></i>',
-                }
+              - label: Facebook
+                name: facebook
+                widget: object
+                fields:
+                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-facebook-square\"></i>"}
+                  - { label: Link, name: url, widget: string, required: false }
+              - label: Twitter
+                name: twitter
+                widget: object
+                fields:
+                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-twitter\"></i>"}
+                  - { label: Link, name: url, widget: string, required: false }
+              - label: Instagram
+                name: instagram
+                widget: object
+                fields:
+                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-instagram\"></i>"}
+                  - { label: Link, name: url, widget: string, required: false }
+              - label: Google+
+                name: google_plus
+                widget: object
+                fields:
+                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-google-plus-g\"></i>"}
+                  - { label: Link, name: url, widget: string, required: false }
+              - label: Github
+                name: github
+                widget: object
+                fields:
+                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-github\"></i>"}
+                  - { label: Link, name: url, widget: string, required: false }
           - label: "Contact Information"
             name: contact-info
             widget: "object"
