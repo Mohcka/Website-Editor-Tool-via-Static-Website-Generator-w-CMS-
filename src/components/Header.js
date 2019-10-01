@@ -99,13 +99,14 @@ const Actions = props => (
       </div>
       <div className="social-medias">
         <ul>
-          {props.social_info.social_media.map(s => {
-            if (s.url)
+          {Object.keys(props.social_info.social_media).map(s => {
+          let sm = props.social_info.social_media
+            if (sm[s].url)
               return (
                 <li>
                   <SocialMediasStyledWrapper className={`${s.type}-icon icon`}>
                     <a href={`${s.url}`} rel="noreferrer" target="_blank">
-                      <span dangerouslySetInnerHTML={{ __html: s.icon }}></span>
+                      <span dangerouslySetInnerHTML={{ __html: sm[s].icon }}></span>
                     </a>
                   </SocialMediasStyledWrapper>
                 </li>
@@ -187,9 +188,26 @@ const Header = ({ siteTitle }) => {
                 phone
               }
               social_media {
-                url
-                type
-                icon
+                facebook {
+                  icon
+                  url
+                }
+                google_plus {
+                  icon
+                  url
+                }
+                github {
+                  icon
+                  url
+                }
+                instagram {
+                  icon
+                  url
+                }
+                twitter {
+                  icon
+                  url
+                }
               }
             }
           }
@@ -223,6 +241,7 @@ const Header = ({ siteTitle }) => {
     }
   `)
 
+  console.log(Object.keys(data.social_info.edges[0].node.frontmatter.social_media))
   return (
     <header id="home">
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
