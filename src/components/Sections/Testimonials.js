@@ -1,35 +1,39 @@
 import React, { Component } from "react"
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 import anime from "animejs"
 import { tns } from "tiny-slider/src/tiny-slider"
 import "tiny-slider/dist/tiny-slider.css"
-import styled, {Title} from "styled-components"
+import styled from "styled-components"
+import { breakPoints } from "../styles/FlakeTheme"
 
 import { mod } from "../../utils/math-helpers"
 
 const StyledTestimonialWrapper = styled.div`
-    position: relative;
-    // background: ${props => props.theme.dark}
-    // color: ${props => props.theme.light}
-    text-align: center;
-    padding: 50px 0;
+  position: relative;
+  text-align: center;
+  padding: 50px 0;
 
-    .testimonial-slides-wrapper{
-        width: 80%;
-        margin: 0 auto;
-    }
+  .testimonial-slides-wrapper {
+    width: 80%;
+    margin: 0 auto;
+  }
 
-    .testimonial{
-        
-    }
+  .testimonial {
+  }
 
-    .testimonial-body{
-        font-size: 1.4em;
-    }
+  .testimonial-body {
+    font-size: 1.4em;
+  }
 
-    .testimonial-author{
-        font-weight: bold;
+  .testimonial-author {
+    font-weight: bold;
+  }
+
+  @media (max-width: ${breakPoints.lg}px) {
+    .testimonial-body {
+      font-size: 1em;
     }
+  }
 `
 
 const StyledNavControlWrapper = styled.div`
@@ -71,7 +75,7 @@ class Testimonials extends Component {
     this.slider = tns({
       container: ".testimonial-slides",
       controls: false,
-      nav: false
+      nav: false,
     })
   }
 
@@ -112,8 +116,8 @@ class Testimonials extends Component {
 Testimonials.propTypes = {
   testimonials: PropTypes.shape({
     author: PropTypes.string,
-    testimonial: PropTypes.string
-  }).isRequired
+    testimonial: PropTypes.string,
+  }).isRequired,
 }
 
 export default Testimonials
