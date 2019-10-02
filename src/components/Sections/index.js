@@ -7,7 +7,6 @@ import Loadable from "react-loadable"
 import styled from "styled-components"
 import { Title } from "../../components/styles/FlakeTheme"
 
-// import Testimonials from './Testimonials'
 import AboutSection from "./About"
 import AccordianSection from "./Accordion"
 import Promotions from "./Promotions"
