@@ -36,7 +36,6 @@ const CarouselStyleWrapper = styled.div`
       cursor: pointer;
       overflow: hidden;
 
-      
       &:before {
         content: "";
         display: block;
@@ -85,6 +84,29 @@ class Carouselcontroller extends Component {
     // bind funcs
     this.createSlideInterval = this.creatSlideInterval.bind(this)
     this.gotoSlide = this.gotoSlide.bind(this)
+  }
+
+  static propTypes = {
+    /**
+     * To be used as an index for the array of slides to determine
+     * the current slide */
+    index: PropTypes.number,
+    /**
+     * the amount seconds (given in milliseconds)
+     * that each interval will take place */
+    duration: PropTypes.number,
+    /**
+     * Array of slides that will contain an image url,
+     * header text and subheader text for each slide */
+    slides: PropTypes.arrayOf(
+      PropTypes.shape({
+        image: PropTypes.string.isRequired,
+        header: PropTypes.string.isRequired,
+        subheader: PropTypes.string.isRequired,
+        themeColor: PropTypes.string,
+      })
+    ).isRequired,
+    themeColor: PropTypes.string,
   }
 
   componentDidMount() {
@@ -161,7 +183,7 @@ class Carouselcontroller extends Component {
               className={`carousel-selector ${
                 i == this.state.index ? "selector-active" : ""
               }`}
-              onClick={e => this.gotoSlide(i)}
+              onClick={() => this.gotoSlide(i)}
             />
           ))}
         </div>

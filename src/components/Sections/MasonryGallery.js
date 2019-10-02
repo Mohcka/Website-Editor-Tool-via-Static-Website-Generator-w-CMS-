@@ -1,10 +1,9 @@
 import React, { Component, useEffect, useState } from "react"
-import { usePrevious } from "../../utils/react-helpers"
 import PropTypes from "prop-types"
 
 import styled from "styled-components"
 import Color from "color"
-import { Title, breakPoints } from "../styles/FlakeTheme"
+import { breakPoints } from "../styles/FlakeTheme"
 import Macy from "macy"
 
 const StyledImageModalWrapper = styled.div`
@@ -56,8 +55,9 @@ const StyledImageModalWrapper = styled.div`
 
 class ImageModal extends Component {
   state = { visible: false }
+  
 
-  closeModal = e => {
+  closeModal = () => {
     this.props.updateModal()
     this.setState({ visible: false })
   }
@@ -79,13 +79,22 @@ class ImageModal extends Component {
           <div className="modal-image-container">
             {this.props.image}
             <div className="close-btn" onClick={this.closeModal}>
-              <i class="fas fa-times-circle"></i>
+              <i className="fas fa-times-circle"></i>
             </div>
           </div>
         </div>
       </StyledImageModalWrapper>
     )
   }
+}
+
+ImageModal.propTypes = {
+  // Decides whether or not the modal is visible
+  visible: PropTypes.bool.isRequired,
+  // Current image to display on the modal
+  image: PropTypes.element.isRequired,
+  // function to call to parent component to update modal
+  updateModal: PropTypes.func.isRequired
 }
 
 const StyledGalleryWrapper = styled.div`
@@ -154,7 +163,7 @@ const Gallery = props => {
             key={i}
             style={{ cursor: "pointer" }}
             className="gallery-image"
-            onClick={e => {
+            onClick={() => {
               setModalImage(image)
               setModalVisible(true)
             }}

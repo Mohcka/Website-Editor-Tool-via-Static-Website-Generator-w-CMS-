@@ -59,12 +59,12 @@ const Accordion = props => {
             <div className="accordian">
               <BSAccordion defaultActiveKey="0" className="accordion">
                 {props.collapsibles.map((collapsible, i) => (
-                  <Card style={{ border: "none", background: "none" }}>
+                  <Card key={i} style={{ border: "none", background: "none" }}>
                     <BSAccordion.Toggle
                       className="accordion-toggle"
                       eventKey={`${i}`}
                     >
-                      <i class="fas fa-minus"></i>{" "}
+                      <i className="fas fa-minus"></i>{" "}
                       <span>{collapsible.header}</span>
                     </BSAccordion.Toggle>
                     <BSAccordion.Collapse

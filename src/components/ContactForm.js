@@ -1,9 +1,9 @@
 import React from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 
-import varStyles, { Title } from "./styles/FlakeTheme"
+import { Title } from "./styles/FlakeTheme"
 
-const ContactForm = props => (
+const ContactForm = () => (
   <Container>
     <div id="contact-form">
       <div className="title">
@@ -53,56 +53,3 @@ const ContactForm = props => (
 )
 
 export default ContactForm
-// {
-//   /* <input type="hidden" name="form-name" value="contact" /> */
-// }
-// {
-//   /* <div className="form-group">
-//             <label for="nameField">Your Name:</label>
-//             <input
-//               type="text"
-//               name="name"
-//               class="form-control"
-//               id="nameField"
-//             />
-//           </div> */
-// }
-// {
-//   /* <div className="form-group">
-//             <label for="emailField">Your Email:</label>
-//             <input
-//               type="email"
-//               name="email"
-//               class="form-control"
-//               id="emailField"
-//             />
-//           </div> */
-// }
-// {
-//   /* <div className="form-group">
-//             <label for="phoneField">Your Phone Number:</label>
-//             <input
-//               type="tel"
-//               name="phone"
-//               class="form-control"
-//               id="phoneField"
-//             />
-//           </div> */
-// }
-// {
-//   /* <div className="form-group">
-//             <label for="message">Message:</label>
-//             <textarea
-//               className="form-control"
-//               name="message"
-//               id="message"
-//             ></textarea>
-//           </div> */
-// }
-// {
-//   /* <p>
-//             <button type="submit" className="btn btn-primary">
-//               Send
-//             </button>
-//           </p> */
-// }

@@ -8,7 +8,7 @@ import styled from "styled-components"
 import Color from "color"
 import FlakeTheme from "./styles/FlakeTheme"
 
-import CarouselWidget from "./CarouselWidget"
+// import CarouselWidget from "./CarouselWidget"
 
 import { slugify } from "../utils/text-helpers"
 
@@ -79,19 +79,19 @@ const Actions = props => (
         <ul>
           <li>
             <div className="address">
-              <i class="fas fa-map-marker-alt"></i>{" "}
+              <i className="fas fa-map-marker-alt"></i>{" "}
               {props.social_info.contact_info.address}
             </div>
           </li>
           <li>
             <div className="phone">
-              <i class="fas fa-phone"></i>{" "}
+              <i className="fas fa-phone"></i>{" "}
               {props.social_info.contact_info.phone}
             </div>
           </li>
           <li>
             <div className="email">
-              <i class="fas fa-envelope"></i>{" "}
+              <i className="fas fa-envelope"></i>{" "}
               {props.social_info.contact_info.email}
             </div>
           </li>
@@ -100,13 +100,19 @@ const Actions = props => (
       <div className="social-medias">
         <ul>
           {Object.keys(props.social_info.social_media).map(s => {
-          let sm = props.social_info.social_media
+            let sm = props.social_info.social_media
             if (sm[s].url)
               return (
                 <li>
                   <SocialMediasStyledWrapper className={`${s.type}-icon icon`}>
-                    <a href={`${s.url}`} rel="noreferrer" target="_blank">
-                      <span dangerouslySetInnerHTML={{ __html: sm[s].icon }}></span>
+                    <a
+                      href={`${s.url}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{ __html: sm[s].icon }}
+                      ></span>
                     </a>
                   </SocialMediasStyledWrapper>
                 </li>
@@ -117,6 +123,22 @@ const Actions = props => (
     </StyledActions>
   </div>
 )
+
+Actions.propTypes = {
+  social_info: PropTypes.shape({
+    contact_info: PropTypes.shape({
+      address: PropTypes.string,
+      phone: PropTypes.string,
+      email: PropTypes.string,
+    }),
+    social_media: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.string,
+        url: PropTypes.string,
+      })
+    ),
+  }),
+}
 
 const Navbar = props => (
   <>
@@ -135,7 +157,7 @@ const Navbar = props => (
       <BSNavbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           {props.pages.sections.map((section, i) => (
-            <Nav.Link href={`#${slugify(section.title)}`}>
+            <Nav.Link key={i} href={`#${slugify(section.title)}`}>
               {section.title.toUpperCase()}
             </Nav.Link>
           ))}
@@ -173,7 +195,7 @@ const CarouselStyledWrapper = styled.div`
   }
 `
 
-const Header = ({ siteTitle }) => {
+const Header = () => {
   const data = useStaticQuery(graphql`
     {
       social_info: allMarkdownRemark(
@@ -241,7 +263,9 @@ const Header = ({ siteTitle }) => {
     }
   `)
 
-  console.log(Object.keys(data.social_info.edges[0].node.frontmatter.social_media))
+  console.log(
+    Object.keys(data.social_info.edges[0].node.frontmatter.social_media)
+  )
   return (
     <header id="home">
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
@@ -249,9 +273,9 @@ const Header = ({ siteTitle }) => {
       {/* <CarouselWidget themeColor={FlakeTheme.primary} /> */}
       <CarouselStyledWrapper>
         <Carousel>
-          {data.pages.edges[0].node.frontmatter.carousel.map(slide => {
+          {data.pages.edges[0].node.frontmatter.carousel.map((slide, i) => {
             return (
-              <Carousel.Item>
+              <Carousel.Item key={i}>
                 <div
                   style={{
                     height: "700px",

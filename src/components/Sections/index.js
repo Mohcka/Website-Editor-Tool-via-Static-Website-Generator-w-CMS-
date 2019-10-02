@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import GImg from "gatsby-image"
 
 import Loadable from "react-loadable"
-
-import { Container, Row, Col, Card, Accordion } from "react-bootstrap"
 import styled from "styled-components"
-import FlakeTheme, { Title } from "../../components/styles/FlakeTheme"
+import { Title } from "../../components/styles/FlakeTheme"
 
 // import Testimonials from './Testimonials'
 import AboutSection from "./About"
@@ -164,8 +162,9 @@ export default () => {
             <section id={slugify(section.title)}>
               <Title>{section.title}</Title>
               <Gallery
-                gallery_imgs={section.gallery.map(gallery_item => (
+                gallery_imgs={section.gallery.map((gallery_item, i) => (
                   <GImg
+                    key={i}
                     fluid={gallery_item.image.childImageSharp.fluid}
                     imgStyle={{ objectFit: "contain" }}
                     style={{ maxHeight: "100%", maxWidth: "100%" }}
