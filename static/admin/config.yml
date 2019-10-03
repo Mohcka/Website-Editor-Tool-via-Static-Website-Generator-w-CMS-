@@ -97,58 +97,58 @@ collections:
                 fields:
                   - { label: Author, name: author, widget: string }
                   - { label: Testimonial, name: testimonial, widget: text }
-    label: "Settings"
-    editor:
-      preview: false
-    files:
-      - name: "settings"
-        label: "Settings"
-        file: "content/settings.md"
-        fields:
-          - { label: Title, name: title, widget: hidden, default: Settings }
-          - label: "Social Media"
-            name: "social-media"
-            widget: "object"
+      - label: "Settings"
+        editor:
+          preview: false
+        files:
+          - name: "settings"
+            label: "Settings"
+            file: "content/settings.md"
             fields:
-              - label: Facebook
-                name: facebook
-                widget: object
+              - { label: Title, name: title, widget: hidden, default: Settings }
+              - label: "Social Media"
+                name: "social-media"
+                widget: "object"
                 fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-facebook-square\"></i>"}
-                  - { label: Link, name: url, widget: string, required: false }
-              - label: Twitter
-                name: twitter
-                widget: object
+                  - label: Facebook
+                    name: facebook
+                    widget: object
+                    fields:
+                      - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-facebook-square\"></i>"}
+                      - { label: Link, name: url, widget: string, required: false }
+                  - label: Twitter
+                    name: twitter
+                    widget: object
+                    fields:
+                      - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-twitter\"></i>"}
+                      - { label: Link, name: url, widget: string, required: false }
+                  - label: Instagram
+                    name: instagram
+                    widget: object
+                    fields:
+                      - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-instagram\"></i>"}
+                      - { label: Link, name: url, widget: string, required: false }
+                  - label: Google+
+                    name: google_plus
+                    widget: object
+                    fields:
+                      - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-google-plus-g\"></i>"}
+                      - { label: Link, name: url, widget: string, required: false }
+                  - label: Github
+                    name: github
+                    widget: object
+                    fields:
+                      - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-github\"></i>"}
+                      - { label: Link, name: url, widget: string, required: false }
+              - label: "Contact Information"
+                name: contact-info
+                widget: "object"
                 fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-twitter\"></i>"}
-                  - { label: Link, name: url, widget: string, required: false }
-              - label: Instagram
-                name: instagram
-                widget: object
-                fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-instagram\"></i>"}
-                  - { label: Link, name: url, widget: string, required: false }
-              - label: Google+
-                name: google_plus
-                widget: object
-                fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-google-plus-g\"></i>"}
-                  - { label: Link, name: url, widget: string, required: false }
-              - label: Github
-                name: github
-                widget: object
-                fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-github\"></i>"}
-                  - { label: Link, name: url, widget: string, required: false }
-          - label: "Contact Information"
-            name: contact-info
-            widget: "object"
-            fields:
-              - { label: "Address", name: address, widget: string }
-              - { label: "Phone Number", name: phone, widget: string }
-              - { label: "Email Address", name: email, widget: string }
-          - label: Primary Color
-            name: primary_color
-            widget: colorpicker
-          - { label: CSS, name: css, widget: text, required: false }
-          - { label: javascript, name: js, widget: text, required: false }
+                  - { label: "Address", name: address, widget: string }
+                  - { label: "Phone Number", name: phone, widget: string }
+                  - { label: "Email Address", name: email, widget: string }
+              - label: Primary Color
+                name: primary_color
+                widget: colorpicker
+              - { label: CSS, name: css, widget: text, required: false }
+              - { label: javascript, name: js, widget: text, required: false }
