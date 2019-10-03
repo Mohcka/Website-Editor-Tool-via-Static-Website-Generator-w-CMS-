@@ -30,6 +30,7 @@ const StyledImageModalWrapper = styled.div`
 
   .modal-image-container {
     position: relative;
+    display: flex;
     width: 80%;
     height: 80%;
     background: ${props => props.theme.light};
@@ -51,11 +52,20 @@ const StyledImageModalWrapper = styled.div`
       border-radius: 25px;
     }
   }
+
+  @media (max-width: ${breakPoints.md}px) {
+    .modal-image-container {
+      background: none;
+
+      .close-btn {
+        // display: none;
+      }
+    }
+  }
 `
 
 class ImageModal extends Component {
   state = { visible: false }
-  
 
   closeModal = () => {
     this.props.updateModal()
@@ -94,7 +104,7 @@ ImageModal.propTypes = {
   // Current image to display on the modal
   image: PropTypes.element.isRequired,
   // function to call to parent component to update modal
-  updateModal: PropTypes.func.isRequired
+  updateModal: PropTypes.func.isRequired,
 }
 
 const StyledGalleryWrapper = styled.div`
@@ -128,12 +138,25 @@ const StyledGalleryWrapper = styled.div`
       }
     }
   }
+
+  @media (max-width: ${breakPoints.md}px) {
+    .gallery-image {
+      &:hover {
+        img {
+          transform: none;
+        }
+        &::before {
+          opacity: 0;
+        }
+      }
+    }
+  }
 `
 
 const Gallery = props => {
   const [modalImage, setModalImage] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
-  // Breakpoint rules for macy, the value stands for the number of columns 
+  // Breakpoint rules for macy, the value stands for the number of columns
   // that whill hold each image
   const breakAtRules = {}
   breakAtRules[breakPoints.lg] = 2
@@ -164,8 +187,16 @@ const Gallery = props => {
             style={{ cursor: "pointer" }}
             className="gallery-image"
             onClick={() => {
-              setModalImage(image)
-              setModalVisible(true)
+              console.log(image)
+              console.log(image.props.src)
+              console.log(window.innerWidth)
+              if (window.innerWidth <= breakPoints.md) {
+                // open new tab to view image on mobile
+                window.open(image.props.src, "_blank")
+              } else {
+                setModalImage(image)
+                setModalVisible(true)
+              }
             }}
           >
             {image}
@@ -184,6 +215,8 @@ const Gallery = props => {
 Gallery.propTypes = {
   // The img elements for the gallery
   gallery_imgs: PropTypes.arrayOf(PropTypes.element).isRequired,
+  // Source of the image
+  src: PropTypes.string.isRequired,
 }
 
 export default Gallery
