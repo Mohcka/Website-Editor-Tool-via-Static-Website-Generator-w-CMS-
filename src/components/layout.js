@@ -14,37 +14,8 @@ import Head from "./Head"
 import Header from "./Header"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
-import { ThemeProvider, createGlobalStyle } from "styled-components"
-import FlakeTheme from "./styles/FlakeTheme"
-
-const GlobalStyle = createGlobalStyle`
-body{
-  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-  
-    font-family: 'Montserrat', arial, helvetica, arial-black
-        sans-serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-ul{
-    margin: 0;
-}
-
-li{
-    list-style: none;
-    margin: 0;
-}
-
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
-  }
-}
-`
+import { ThemeProvider } from "styled-components"
+import FlakeTheme, {GlobalStyle} from "./styles/FlakeTheme"
 
 const Layout = ({ children }) => {
   // const data = useStaticQuery(graphql`
