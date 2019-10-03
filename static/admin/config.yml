@@ -28,9 +28,14 @@ collections:
             name: carousel
             widget: list
             fields:
-                - { label: Image, name: image, widget: image }
-                - { label: Title, name: title, widget: string, required: false }
-                - { label: Subtitle, name: subtitle, widget: string, required: false }
+              - { label: Image, name: image, widget: image }
+              - { label: Title, name: title, widget: string, required: false }
+              - {
+                  label: Subtitle,
+                  name: subtitle,
+                  widget: string,
+                  required: false,
+                }
           - label: "Sections"
             name: "sections"
             widget: "list"
@@ -80,7 +85,7 @@ collections:
                 name: gallery
                 widget: list
                 fields:
-                  - { label: Gallery Image, name: image, type: image}
+                  - { label: Gallery Image, name: image, type: image }
               - label: Promotions
                 name: promotions
                 widget: object
@@ -88,15 +93,19 @@ collections:
                   - label: Promotion List
                     name: promotion_list
                     widget: list
-                    fields: 
+                    fields:
                       - { label: Title, name: title, widget: string }
                       - { label: Promotion, name: promotion, widget: text }
               - label: Testimonials
                 name: testimonials
                 widget: object
                 fields:
-                  - { label: Author, name: author, widget: string }
-                  - { label: Testimonial, name: testimonial, widget: text }
+                  - label: Testimonial List
+                    name: testimonial_list
+                    widget: list
+                    fields:
+                      - { label: Author, name: author, widget: string }
+                      - { label: Testimonial, name: testimonial, widget: text }
       - name: "settings"
         label: "Settings"
         file: "content/settings.md"
@@ -110,31 +119,56 @@ collections:
                 name: facebook
                 widget: object
                 fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-facebook-square\"></i>"}
+                  - {
+                      label: icon,
+                      name: icon,
+                      widget: hidden,
+                      default: '<i class="fab fa-facebook-square"></i>',
+                    }
                   - { label: Link, name: url, widget: string, required: false }
               - label: Twitter
                 name: twitter
                 widget: object
                 fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-twitter\"></i>"}
+                  - {
+                      label: icon,
+                      name: icon,
+                      widget: hidden,
+                      default: '<i class="fab fa-twitter"></i>',
+                    }
                   - { label: Link, name: url, widget: string, required: false }
               - label: Instagram
                 name: instagram
                 widget: object
                 fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-instagram\"></i>"}
+                  - {
+                      label: icon,
+                      name: icon,
+                      widget: hidden,
+                      default: '<i class="fab fa-instagram"></i>',
+                    }
                   - { label: Link, name: url, widget: string, required: false }
               - label: Google+
                 name: google_plus
                 widget: object
                 fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-google-plus-g\"></i>"}
+                  - {
+                      label: icon,
+                      name: icon,
+                      widget: hidden,
+                      default: '<i class="fab fa-google-plus-g"></i>',
+                    }
                   - { label: Link, name: url, widget: string, required: false }
               - label: Github
                 name: github
                 widget: object
                 fields:
-                  - { label: icon, name: icon, widget: hidden, default: "<i class=\"fab fa-github\"></i>"}
+                  - {
+                      label: icon,
+                      name: icon,
+                      widget: hidden,
+                      default: '<i class="fab fa-github"></i>',
+                    }
                   - { label: Link, name: url, widget: string, required: false }
           - label: "Contact Information"
             name: contact-info
