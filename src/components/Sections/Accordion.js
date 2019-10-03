@@ -44,7 +44,7 @@ const Accordion = props => {
     <StyledAccordionWrapper id={`${slugify("ah")}`}>
       <Container fluid>
         <Row style={{ backgroundColor: FlakeTheme.light }}>
-          <Col lg={6} className="d-none d-lg-block">
+          <Col lg={6} className="d-none d-lg-block p-0">
             <div
               className="image "
               style={{ maxWidth: "100%", height: "100%", display: "flex" }}
