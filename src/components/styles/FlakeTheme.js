@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
+import Color from "color"
 
 let dark = "#222",
   light = "#F7F7F7",
@@ -36,6 +37,72 @@ export default {
     color: dark,
   },
 }
+//TODO: Find a way to seperate boostrap overrides
+// const bootstrapOverrideStyles = props => return (`
+// .btn.btn-primary {
+//     background: ${props => props.theme.primary};
+//     border-color: ${props => props.theme.primary}
+//     border-radius: 25px;
+
+//     &:hover{
+//       background: ${props =>
+//         Color(props.theme.primary)
+//           .darken(0.2)
+//           .hex()}
+//       border-color: ${props =>
+//         Color(props.theme.primary)
+//           .darken(0.2)
+//           .hex()}
+//     }
+//   }
+// `)
+
+export const GlobalStyle = createGlobalStyle`
+body{
+  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+  
+    font-family: 'Montserrat', arial, helvetica, arial-black
+        sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    margin: 0;
+}
+
+li{
+    list-style: none;
+    margin: 0;
+}
+
+// Override bootstrap styles
+.btn.btn-primary {
+    background: ${props => props.theme.primary};
+    border-color: ${props => props.theme.primary}
+    border-radius: 25px;
+
+    &:hover{
+      background: ${props =>
+        Color(props.theme.primary)
+          .darken(0.2)
+          .hex()}
+      border-color: ${props =>
+        Color(props.theme.primary)
+          .darken(0.2)
+          .hex()}
+    }
+  }
+//
+@media only screen and (max-width: ${breakPoints.sm}px) {
+  html {
+    font-size: 100%;
+  }
+}
+`
 
 const Title = styled.h2`
   text-align: center;
