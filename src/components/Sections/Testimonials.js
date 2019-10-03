@@ -74,12 +74,14 @@ class Testimonials extends Component {
   state = {}
 
   static propTypes = {
-    testimonials: PropTypes.arrayOf(
-      PropTypes.shape({
-        author: PropTypes.string,
-        testimonial: PropTypes.string,
-      }).isRequired
-    ),
+    testimonials: PropTypes.shape({
+      testimonial_list: PropTypes.arrayOf(
+        PropTypes.shape({
+          author: PropTypes.string,
+          testimonial: PropTypes.string,
+        })
+      ).isRequired,
+    }),
   }
 
   componentDidMount() {
@@ -99,7 +101,7 @@ class Testimonials extends Component {
       <StyledTestimonialWrapper>
         <div className="testimonial-slides-wrapper">
           <div className="testimonial-slides">
-            {this.props.testimonials.map((data, i) => (
+            {this.props.testimonials.testimonial_list.map((data, i) => (
               <div key={i}>
                 <Testimonial
                   testimonial={data.testimonial}

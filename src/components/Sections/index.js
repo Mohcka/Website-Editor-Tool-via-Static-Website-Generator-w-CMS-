@@ -115,14 +115,17 @@ export default () => {
                     }
                   }
                 }
-
-                testimonials {
-                  author
-                  testimonial
-                }
                 promotions {
-                  title
-                  description
+                  promotion_list {
+                    title
+                    description
+                  }
+                }
+                testimonials {
+                  testimonial_list {
+                    author
+                    testimonial
+                  }
                 }
               }
             }
