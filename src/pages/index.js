@@ -1,9 +1,15 @@
 import React from "react"
+import Loadable from "react-loadable"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Sections from "../components/Sections"
+// import Sections from "../components/Sections"
+
+const Sections = Loadable({
+  loader: () => import("../components/Sections"),
+  loading: () => <div>Loading...</div>,
+})
 
 const IndexPage = () => (
   <Layout>

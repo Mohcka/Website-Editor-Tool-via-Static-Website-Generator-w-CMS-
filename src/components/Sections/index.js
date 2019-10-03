@@ -3,7 +3,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GImg from "gatsby-image"
 
-import Loadable from "react-loadable"
+// import Loadable from "react-loadable"
 import styled from "styled-components"
 import { Title } from "../../components/styles/FlakeTheme"
 import Color from "color"
@@ -13,20 +13,22 @@ import AboutSection from "./About"
 import AccordianSection from "./Accordion"
 import Promotions from "./Promotions"
 import ContactForm from "../ContactForm"
+import Gallery from "./MasonryGallery"
+import Testimonials from "./Testimonials"
 
 import { slugify } from "../../utils/text-helpers"
 
-//* Load Gallery
-const Gallery = Loadable({
-  loader: () => import("./MasonryGallery"),
-  loading: () => <div>Loading...</div>,
-})
+// //* Load Gallery
+// const Gallery = Loadable({
+//   loader: () => import("./MasonryGallery"),
+//   loading: () => <div>Loading...</div>,
+// })
 
-//* Load Testimonials
-const Testimonials = Loadable({
-  loader: () => import("./Testimonials"),
-  loading: () => <div>Loading...</div>,
-})
+// //* Load Testimonials
+// const Testimonials = Loadable({
+//   loader: () => import("./Testimonials"),
+//   loading: () => <div>Loading...</div>,
+// })
 
 const SectionsStyledWrapper = styled.div`
   & > section {
