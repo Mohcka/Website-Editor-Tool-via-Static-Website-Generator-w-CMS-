@@ -6,6 +6,8 @@ import GImg from "gatsby-image"
 import Loadable from "react-loadable"
 import styled from "styled-components"
 import { Title } from "../../components/styles/FlakeTheme"
+import Color from "color"
+import GeoPattern from "geopattern"
 
 import AboutSection from "./About"
 import AccordianSection from "./Accordion"
@@ -36,6 +38,28 @@ const SectionsStyledWrapper = styled.div`
 
     &.dark-bg {
       background: ${props => props.theme.dark};
+      color: ${props => props.theme.light};
+    }
+
+    &.testimonial-bg {
+      background: ${props =>
+        GeoPattern.generate("Testimonial", {
+          generator: "chevrons",
+          color: Color(props.theme.primary)
+            .darken(0.4)
+            .hex(),
+        }).toDataUrl()};
+      color: ${props => props.theme.light};
+    }
+
+    &.promotions-bg {
+      background: ${props =>
+        GeoPattern.generate("Promotions", {
+          generator: "plusSigns",
+          color: Color(props.theme.primary)
+            .darken(0.4)
+            .hex(),
+        }).toDataUrl()};
       color: ${props => props.theme.light};
     }
   }
@@ -144,7 +168,10 @@ export default () => {
 
         if (section.type === "accordion") {
           let accordionImage = (
-            <GImg fluid={section.accordion_image.childImageSharp.fluid} />
+            <GImg
+              fluid={section.accordion_image.childImageSharp.fluid}
+              style={{ flex: 1 }}
+            />
           )
 
           return (
@@ -166,7 +193,8 @@ export default () => {
                     key={i}
                     fluid={gallery_item.image.childImageSharp.fluid}
                     imgStyle={{ objectFit: "contain" }}
-                    style={{ maxHeight: "100%", maxWidth: "100%" }}
+                    style={{ maxHeight: "100%", maxWidth: "100%", flex: 1 }}
+                    src={gallery_item.image.childImageSharp.fluid.src}
                   />
                 ))}
               />
@@ -175,14 +203,14 @@ export default () => {
 
         if (section.type === "testimonials")
           return (
-            <section id={slugify(section.title)} className="dark-bg">
+            <section id={slugify(section.title)} className="testimonial-bg">
               <Testimonials testimonials={section.testimonials} />
             </section>
           )
 
         if (section.type === "promotions")
           return (
-            <section id={slugify(section.title)} className="dark-bg">
+            <section id={slugify(section.title)} className="promotions-bg">
               <Promotions promotions={section.promotions} />
             </section>
           )
