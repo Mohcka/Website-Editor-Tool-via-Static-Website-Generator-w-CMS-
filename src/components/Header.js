@@ -6,7 +6,7 @@ import { Nav, Navbar as BSNavbar, Carousel } from "react-bootstrap"
 
 import styled from "styled-components"
 import Color from "color"
-import FlakeTheme from "./styles/FlakeTheme"
+import FlakeTheme, {breakPoints} from "./styles/FlakeTheme"
 
 // import CarouselWidget from "./CarouselWidget"
 
@@ -32,7 +32,7 @@ const StyledActions = styled.div`
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: ${breakPoints.md}px) {
     flex-direction: column;
 
     .contact-info ul {
