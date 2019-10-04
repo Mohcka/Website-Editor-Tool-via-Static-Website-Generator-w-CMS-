@@ -101,7 +101,7 @@ class Testimonials extends Component {
       <StyledTestimonialWrapper>
         <div className="testimonial-slides-wrapper">
           <div className="testimonial-slides">
-            {this.props.testimonials.testimonial_list.map((data, i) => (
+            {this.props.testimonials.map((data, i) => (
               <div key={i}>
                 <Testimonial
                   testimonial={data.testimonial}

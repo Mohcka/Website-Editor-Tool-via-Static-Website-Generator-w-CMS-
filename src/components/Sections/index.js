@@ -116,16 +116,12 @@ export default () => {
                   }
                 }
                 promotions {
-                  promotion_list {
-                    title
-                    description
-                  }
+                  title
+                  promotion
                 }
                 testimonials {
-                  testimonial_list {
-                    author
-                    testimonial
-                  }
+                  author
+                  testimonial
                 }
               }
             }

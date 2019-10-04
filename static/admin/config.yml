@@ -86,7 +86,7 @@ collections:
                 widget: object
                 fields:
                   - label: Gallery Items
-                    name: gallery_items
+                    name: gallery
                     widget: list
                     fields:
                       - { label: Gallery Image, name: image, type: image, widget: image }

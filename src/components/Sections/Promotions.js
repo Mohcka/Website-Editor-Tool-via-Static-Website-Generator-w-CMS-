@@ -17,7 +17,7 @@ const Promotions = props => {
       <Container>
         {/* Split the promotions into subgroups of n for each row */}
         <Row>
-          {_.chunk(props.promotions.promotion_list, 3).map((promotionSet, i) => (
+          {_.chunk(props.promotions, 3).map((promotionSet, i) => (
             <React.Fragment key={i}>
               {promotionSet.map((promotion, i) => (
                 <React.Fragment key={i}>

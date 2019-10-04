@@ -89,7 +89,7 @@ sections:
         header: Two
     title: Bullet Points
     type: accordion
-  - gallery_items:
+  - gallery:
       - image: /uploads/images/vertical_2.jpg
       - image: /uploads/images/carousel-1.jpg
       - image: /uploads/images/carousel-2.jpg
