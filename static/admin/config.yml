@@ -94,8 +94,8 @@ collections:
                 name: promotions
                 widget: object
                 fields:
-                  - label: Promotion List
-                    name: promotion_list
+                  - label: Promotions
+                    name: promotions
                     widget: list
                     fields:
                       - { label: Title, name: title, widget: string }
@@ -104,8 +104,8 @@ collections:
                 name: testimonials
                 widget: object
                 fields:
-                  - label: Testimonial List
-                    name: testimonial_list
+                  - label: Testimonials
+                    name: testimonials
                     widget: list
                     fields:
                       - { label: Author, name: author, widget: string }
