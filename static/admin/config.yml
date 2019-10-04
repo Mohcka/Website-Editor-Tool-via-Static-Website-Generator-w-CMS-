@@ -89,7 +89,7 @@ collections:
                     name: gallery_itmes
                     widget: list
                     fields:
-                      - { label: Gallery Image, name: image, type: image }
+                      - { label: Gallery Image, name: image, type: image, widget: image }
               - label: Promotions
                 name: promotions
                 widget: object
