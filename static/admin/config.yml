@@ -5,8 +5,6 @@ backend:
 media_folder: static/uploads/images
 public_folder: uploads/images
 
-display_url: https://practical-kirch-724ea6.netlify.com
-
 collections:
   - name: "pages"
     label: "Pages"
