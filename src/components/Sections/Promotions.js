@@ -24,7 +24,7 @@ const Promotions = props => {
                   <Col xs={12} md={6} lg={4}>
                     <div>
                       <h4>{promotion.title}</h4>
-                      <p>{promotion.description}</p>
+                      <p>{promotion.promotion}</p>
                     </div>
                   </Col>
                 </React.Fragment>
@@ -41,7 +41,7 @@ Promotions.propTypes = {
   promotions: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
-      description: PropTypes.string,
+      promotion: PropTypes.string,
     })
   ).isRequired,
 }
