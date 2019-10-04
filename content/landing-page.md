@@ -35,7 +35,27 @@ sections:
     image: /uploads/images/construction-late-payments.jpg
     title: About
     type: about
-  - promotion_list:
+  - promotions:
+      - promotion: >-
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s.
+        title: Title One
+      - promotion: >-
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s.
+        title: Title One
+      - promotion: >-
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s.
+        title: Title One
+      - promotion: >-
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s.
+        title: Title One
       - promotion: >-
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -43,30 +63,6 @@ sections:
         title: Title One
     promotions:
       promotion_list:
-        - description: >-
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          title: Title
-        - description: >-
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          title: Title
-        - description: >-
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          title: Title
-        - description: >-
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          title: Title
         - description: >-
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -101,7 +97,7 @@ sections:
         header: Two
     title: Bullet Points
     type: accordion
-  - gallery:
+  - gallery_items:
       - image: /uploads/images/vertical_2.jpg
       - image: /uploads/images/carousel-1.jpg
       - image: /uploads/images/carousel-2.jpg
@@ -114,14 +110,10 @@ sections:
       - image: /uploads/images/vertical_2.jpg
       - image: /uploads/images/construction-late-payments.jpg
       - image: /uploads/images/carousel-1.jpg
-      - image: /uploads/images/vertical_img.jpg
-    gallery_itmes:
-      - image: /uploads/images/vertical_img.jpg
-      - image: /uploads/images/construction-late-payments.jpg
       - image: /uploads/images/vertical_img.jpg
     title: Gallery
     type: gallery
-  - testimonial_list:
+  - testimonials:
       - author: John Smith
         testimonial: >-
           Lorem Ipsum is simply dummy text of the printing and typesetting
