@@ -151,7 +151,7 @@ const Navbar = props => (
           color: FlakeTheme.primary,
         }}
       >
-        Placeholder
+        Welcome
       </BSNavbar.Brand>
       <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
       <BSNavbar.Collapse id="basic-navbar-nav">
