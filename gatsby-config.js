@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby Starter Netlify CMS Landing Page`,
+    description: `An example on how to use Netlify CMS to create a customizable landing page`,
+    author: `@mohcka`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,19 +36,10 @@ module.exports = {
         name: `content`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-netlify-cms-paths`,
-    //   options: {
-    //     // Path to your Netlify CMS config file
-    //     cmsConfig: `/static/admin/config.yml`,
-    //   },
-    // },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          // // gatsby-remark-relative-images must
-          // // go before gatsby-remark-images
           {
             resolve: `gatsby-remark-relative-images`,
           },
@@ -67,7 +58,6 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-          // `gatsby-plugin-netlify-cms-paths`,
         ],
       },
     },
