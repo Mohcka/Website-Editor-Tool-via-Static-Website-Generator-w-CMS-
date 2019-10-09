@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 import styled from "styled-components"
 import Color from "color"
-import { breakPoints } from "../styles/FlakeTheme"
+import { breakPoints } from "../styles"
 import Macy from "macy"
 
 const StyledImageModalWrapper = styled.div`

@@ -8,7 +8,7 @@ import {
   Accordion as BSAccordion,
 } from "react-bootstrap"
 import styled from "styled-components"
-import FlakeTheme, { Title } from "../styles/FlakeTheme"
+import theme, { Title } from "../styles"
 import { slugify } from "../../utils/text-helpers"
 
 const StyledAccordionWrapper = styled.div`
@@ -43,7 +43,7 @@ const Accordion = props => {
   return (
     <StyledAccordionWrapper id={`${slugify("ah")}`}>
       <Container fluid>
-        <Row style={{ backgroundColor: FlakeTheme.light }}>
+        <Row style={{ backgroundColor: theme.light }}>
           <Col lg={6} className="d-none d-lg-block p-0">
             <div
               className="image "

@@ -1,6 +1,5 @@
 ---
 title: Landing Page
-fimage: ./images/opengraph.jpg
 carousel:
   - image: /uploads/images/carousel-1.jpg
     subtitle: one

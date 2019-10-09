@@ -1,21 +1,9 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 const webpack = require("webpack")
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-//   const page = path.resolve("./src/index.js");
-}
-
-exports.onCreateNode = ({ node, getNode }) => {
+exports.onCreateNode = ({ node }) => {
   fmImagesToRelative(node);
-
-  if(node.internal.type === `MarkdownRemark`) {
-    
-  }
 }
 
 // fix for build using bootstrap

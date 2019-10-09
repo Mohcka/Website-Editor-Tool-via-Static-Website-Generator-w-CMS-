@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { tns } from "tiny-slider/src/tiny-slider"
 import "tiny-slider/dist/tiny-slider.css"
 import styled from "styled-components"
-import { breakPoints } from "../styles/FlakeTheme"
+import { breakPoints } from "../styles"
 
 const StyledTestimonialWrapper = styled.div`
   position: relative;
@@ -74,14 +74,12 @@ class Testimonials extends Component {
   state = {}
 
   static propTypes = {
-    testimonials: PropTypes.shape({
-      testimonial_list: PropTypes.arrayOf(
-        PropTypes.shape({
-          author: PropTypes.string,
-          testimonial: PropTypes.string,
-        })
-      ).isRequired,
-    }),
+    testimonials: PropTypes.arrayOf(
+      PropTypes.shape({
+        author: PropTypes.string,
+        testimonial: PropTypes.string,
+      })
+    ),
   }
 
   componentDidMount() {

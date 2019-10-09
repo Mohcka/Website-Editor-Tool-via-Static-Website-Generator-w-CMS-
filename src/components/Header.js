@@ -6,9 +6,7 @@ import { Nav, Navbar as BSNavbar, Carousel } from "react-bootstrap"
 
 import styled from "styled-components"
 import Color from "color"
-import FlakeTheme, {breakPoints} from "./styles/FlakeTheme"
-
-// import CarouselWidget from "./CarouselWidget"
+import theme, {breakPoints} from "./styles"
 
 import { slugify } from "../utils/text-helpers"
 
@@ -72,7 +70,7 @@ const SocialMediasStyledWrapper = styled.div`
 `
 
 const Actions = props => (
-  <div style={FlakeTheme.darkBackground}>
+  <div style={theme.darkBackground}>
     <StyledActions className="actions">
       {/* Contacts List */}
       <div className="contact-info">
@@ -148,7 +146,7 @@ const Navbar = props => (
         style={{
           fontWeight: "bold",
           fontSize: "1.7em",
-          color: FlakeTheme.primary,
+          color: theme.primary,
         }}
       >
         Welcome
@@ -270,7 +268,7 @@ const Header = () => {
     <header id="home">
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
       <Navbar pages={data.pages.edges[0].node.frontmatter} />
-      {/* <CarouselWidget themeColor={FlakeTheme.primary} /> */}
+      {/* <CarouselWidget themeColor={theme.primary} /> */}
       <CarouselStyledWrapper>
         <Carousel>
           {data.pages.edges[0].node.frontmatter.carousel.map((slide, i) => {

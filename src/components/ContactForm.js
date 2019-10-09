@@ -1,7 +1,7 @@
 import React from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 
-import { Title } from "./styles/FlakeTheme"
+import { Title } from "./styles"
 
 const ContactForm = () => (
     <Container>

@@ -5,7 +5,7 @@ import GImg from "gatsby-image"
 
 // import Loadable from "react-loadable"
 import styled from "styled-components"
-import { Title } from "../../components/styles/FlakeTheme"
+import { Title } from "../styles"
 import Color from "color"
 import GeoPattern from "geopattern"
 
@@ -17,18 +17,6 @@ import Gallery from "./MasonryGallery"
 import Testimonials from "./Testimonials"
 
 import { slugify } from "../../utils/text-helpers"
-
-// //* Load Gallery
-// const Gallery = Loadable({
-//   loader: () => import("./MasonryGallery"),
-//   loading: () => <div>Loading...</div>,
-// })
-
-// //* Load Testimonials
-// const Testimonials = Loadable({
-//   loader: () => import("./Testimonials"),
-//   loading: () => <div>Loading...</div>,
-// })
 
 const SectionsStyledWrapper = styled.div`
   & > section {
@@ -78,11 +66,6 @@ export default () => {
             id
             frontmatter {
               title
-              fimage {
-                childImageSharp {
-                  id
-                }
-              }
               sections {
                 title
                 type

@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { Title, breakPoints } from "../styles/FlakeTheme"
+import { Title, breakPoints } from "../styles"
 import { Container, Row, Col } from "react-bootstrap"
 import { slugify } from "../../utils/text-helpers"
 
