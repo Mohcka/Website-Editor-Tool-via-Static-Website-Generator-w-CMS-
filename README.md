@@ -8,7 +8,7 @@ An example on how to use Netlify CMS to create a customizable landing page
 A simple landing page with several sections that can be edited, rearranged, and removed with the Netlify CMS
 
 ### How to Use
-Make sure you have [gatsby-cli](https://www.gatsbyjs.org/docs/gatsby-cli/) installed.
+Make sure you've nodejs and [gatsby-cli](https://www.gatsbyjs.org/docs/gatsby-cli/) installed.
 
 Open your terminal of choice and run:
 
