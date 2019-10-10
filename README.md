@@ -22,4 +22,8 @@ To test a production build run `npm run build && npm run serve` and go to `local
 
 When you're ready to deploy to netlify, please follow [this guide](https://www.gatsbyjs.org/docs/deploying-to-netlify/) to launch your site 
 
-Once launched, you can then head over to `your-page.netlify.com` to view the live page.  To make edits, first make sure you've s[etup authentication](https://www.netlifycms.org/docs/add-to-your-site/#setup-on-netlify) then go to `your-page.netlify.com/admin`.  You will see two tabs on the left "Landing Page" and "Settings".  Landing Page is where you'll enter the information for the sections and carousel.  The Settings allows you to change the primary color theme of the website, make changes to the contact information and social media links, as well as embed custom css and javascript if you need to do so on the CMS.  Check out the [docs](https://www.netlifycms.org/docs/intro/) for more information on working with Netlify CMS.
+Once launched, you can then head over to `your-page.netlify.com` to view the live page.  
+
+To make edits, first make sure you've [setup authentication](https://www.netlifycms.org/docs/add-to-your-site/#setup-on-netlify) then go to `your-page.netlify.com/admin`.  You will see two tabs on the left "Landing Page" and "Settings".  Landing Page is where you'll enter the information for the sections and carousel.  The Settings allows you to change the primary color theme of the website, make changes to the contact information and social media links, as well as embed custom css and javascript if you need to do so on the CMS.  
+
+Check out the [docs](https://www.netlifycms.org/docs/intro/) for more information on working with Netlify CMS.
