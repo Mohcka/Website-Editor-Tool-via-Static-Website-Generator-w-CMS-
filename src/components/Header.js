@@ -6,7 +6,7 @@ import { Nav, Navbar as BSNavbar, Carousel } from "react-bootstrap"
 
 import styled from "styled-components"
 import Color from "color"
-import theme, {breakPoints} from "./styles"
+import theme, { breakPoints } from "./styles"
 
 import { slugify } from "../utils/text-helpers"
 
@@ -261,9 +261,6 @@ const Header = () => {
     }
   `)
 
-  console.log(
-    Object.keys(data.social_info.edges[0].node.frontmatter.social_media)
-  )
   return (
     <header id="home">
       <Actions social_info={data.social_info.edges[0].node.frontmatter} />
