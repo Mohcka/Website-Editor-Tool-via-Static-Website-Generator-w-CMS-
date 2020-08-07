@@ -1,4 +1,4 @@
-## Gatsby Starter Netlify CMS Landing Page
+## Website Editor Tool (via Static Website Generator /w CMS)
 
 An example on how to use Netlify CMS to create a customizable landing page
 
